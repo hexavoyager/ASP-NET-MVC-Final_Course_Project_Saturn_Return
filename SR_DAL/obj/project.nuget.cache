@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "z2VGQBX3dcpnaPeZj640yhuP9oyuKMLr6jUv+f5FS2rUueKWcIsPcswMWD6/cBPY7ak1VLCuB5oLmsIxnQki9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Norman\\Desktop\\SR FINAL\\SR_DAL\\SR_DAL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Norman\\.nuget\\packages\\tools.connections.database\\1.0.1\\tools.connections.database.1.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

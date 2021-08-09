@@ -1,0 +1,27 @@
+﻿using SR_BLL.Data;
+using SR_BLL.Mappers;
+using SR_BLL.Repos;
+using DR = SR_DAL.Repos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tools.Connections.Database;
+
+
+namespace SR_BLL.Services
+{
+    public class ClientService : IClientRepo
+    {
+        private readonly DR.IClientRepo _clientRepo;
+        public ClientService(DR.IClientRepo clientRepo)
+        {
+            _clientRepo = clientRepo;
+        }
+        public Client Get(int id)
+        {
+            return _clientRepo.Get(id)?.ToBLL();
+        }
+    }
+}

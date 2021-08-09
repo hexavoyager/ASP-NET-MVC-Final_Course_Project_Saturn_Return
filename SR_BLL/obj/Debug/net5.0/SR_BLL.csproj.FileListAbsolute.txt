@@ -1,0 +1,15 @@
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\SR_BLL.deps.json
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\SR_BLL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\ref\SR_BLL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\SR_BLL.pdb
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\SR_DAL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\bin\Debug\net5.0\SR_DAL.pdb
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.csproj.AssemblyReference.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.AssemblyInfoInputs.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.AssemblyInfo.cs
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.csproj.CoreCompileInputs.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.csproj.CopyComplete
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\ref\SR_BLL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_BLL\obj\Debug\net5.0\SR_BLL.pdb

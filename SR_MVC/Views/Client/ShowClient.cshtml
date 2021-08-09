@@ -1,0 +1,15 @@
+﻿@model SR_MVC.Models.Forms.DisplayClient
+
+@{
+    ViewData["Title"] = "ShowClient/";
+}
+
+<h1>Client</h1>
+<p>@Html.DisplayNameFor(model => model.lname)</p>
+<p>@Html.DisplayFor(model => model.lname)</p>
+<p>@Html.DisplayNameFor(model => model.fname)</p>
+<p>@Html.DisplayFor(model => model.fname)</p>
+
+@*@foreach (var i in Model){
+<p>@Html.DisplayFor(model => model.Lname)</p>
+}*@

@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "SR_DAL/1.0.0": {
+        "dependencies": {
+          "Tools.Connections.Database": "1.0.1"
+        },
+        "runtime": {
+          "SR_DAL.dll": {}
+        }
+      },
+      "Tools.Connections.Database/1.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Tools.Connections.Database.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SR_DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Tools.Connections.Database/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eRthoS5v489HZobrP0J/aPoZsHer25jflkpzEYznyMx7DdbtbTDerQjBgL3yMnrfRrxALMdEVNeivCn5OSB2Ig==",
+      "path": "tools.connections.database/1.0.1",
+      "hashPath": "tools.connections.database.1.0.1.nupkg.sha512"
+    }
+  }
+}

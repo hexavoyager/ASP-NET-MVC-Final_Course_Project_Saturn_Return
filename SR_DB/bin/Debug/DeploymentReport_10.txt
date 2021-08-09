@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Bookings]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Bookings] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Bookings_ToTable_Clients] (Foreign Key)
+       [dbo].[FK_Bookings_ToTable_Ports] (Foreign Key)
+     Create
+       [dbo].[FK_Bookings_ToTable_Clients] (Foreign Key)
+       [dbo].[FK_Bookings_ToTable_Ports] (Foreign Key)

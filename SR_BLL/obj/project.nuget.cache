@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "L7C2mgjRm2AtKRpl6WLrcM2a3E7Bz3yWPydVohd8Ggnz9y1gTbDUgiMUQAZlPgv+UWxWFyuwUvq7E1Ce71pAyw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Norman\\Desktop\\SR FINAL\\SR_BLL\\SR_BLL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Norman\\.nuget\\packages\\tools.connections.database\\1.0.1\\tools.connections.database.1.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

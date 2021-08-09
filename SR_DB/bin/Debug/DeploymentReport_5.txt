@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Bookings] (Table)
+       [dbo].[Planets] (Table)
+       [dbo].[Ports] (Table)
+       [dbo].[Users] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Users] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Users] (Default Constraint)
+       [dbo].[FK_Bookings_ToTable_Clients] (Foreign Key)
+       [dbo].[FK_Bookings_ToTable_Ports] (Foreign Key)
+       [dbo].[FK_Ports_ToTable_Planets] (Foreign Key)
+       [dbo].[FK_Users_ToTable_Clients] (Foreign Key)
+
+** Supporting actions

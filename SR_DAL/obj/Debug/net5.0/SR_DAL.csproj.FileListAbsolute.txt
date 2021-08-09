@@ -1,0 +1,12 @@
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\bin\Debug\net5.0\SR_DAL.deps.json
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\bin\Debug\net5.0\SR_DAL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\bin\Debug\net5.0\ref\SR_DAL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\bin\Debug\net5.0\SR_DAL.pdb
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.csproj.AssemblyReference.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.AssemblyInfoInputs.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.AssemblyInfo.cs
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\ref\SR_DAL.dll
+C:\Users\Norman\Desktop\SR FINAL\SR_DAL\obj\Debug\net5.0\SR_DAL.pdb
