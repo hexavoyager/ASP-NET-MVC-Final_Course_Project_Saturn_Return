@@ -1,47 +1,5 @@
-﻿@using SR_BLL.Data
-@using SR_BLL.Repos
-@using SR_BLL.Services
-
-@model SR_MVC.Models.Forms.HomeForm
-
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
-    ViewData["Title"] = "Home Page";
-
 }
-
-<div class="text-center">
-    <h1 class="display-4">Your interplanetary journey starts here.</h1>
-</div>
-
-
-<div class="row">
-    <div>
-        <form asp-action="Index" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <select asp-for="Name" asp-items="Model.Planets" class="form-control"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Stopover" class="control-label"></label>
-                <input asp-for="Stopover" type="checkbox" name="Stopover" />
-            </div>
-            <div class="form-group">
-                <label asp-for="DateA" class="control-label"></label>
-                <input asp-for="DateA" type="date" name="dateA" />
-            </div>
-            <div class="form-group">
-                <label asp-for="DateB" class="control-label"></label>
-                <input asp-for="DateB" type="date" name="dateA" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Is_1stclass" class="control-label"></label>
-                <input asp-for="Is_1stclass" type="checkbox" name="1st Class" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Search for launches..." class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-

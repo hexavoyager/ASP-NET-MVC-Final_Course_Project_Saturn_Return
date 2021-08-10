@@ -13,7 +13,6 @@ namespace SR_MVC.Models.Forms
     public class HomeForm
 
     {
-
         public static DateTime now = DateTime.Now;
 
         [Required]

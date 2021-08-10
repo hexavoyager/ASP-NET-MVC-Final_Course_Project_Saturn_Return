@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SR_DAL\**" />
+    <Compile Remove="SR_DB\**" />
+    <Content Remove="SR_DAL\**" />
+    <Content Remove="SR_DB\**" />
+    <EmbeddedResource Remove="SR_DAL\**" />
+    <EmbeddedResource Remove="SR_DB\**" />
+    <None Remove="SR_DAL\**" />
+    <None Remove="SR_DB\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="Tools.Connections.Database" Version="1.0.1" />

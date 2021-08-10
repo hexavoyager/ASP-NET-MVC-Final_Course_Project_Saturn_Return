@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SR_DAL;
-using SR_DAL.Data;
-using SR_DAL.Repos;
-using SR_DAL.Services;
+using SR_BLL;
+using SR_BLL.Data;
+using SR_BLL.Repos;
+using SR_BLL.Services;
+using SR_MVC.Infrastructure.Session;
 using SR_MVC.Models.Forms;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,11 @@ namespace SR_MVC.Controllers
     {
 
         private readonly IClientRepo _clientRepo;
-        public ClientController(IClientRepo clientRepo)
+        private readonly ISessionManager _sessionManager;
+        public ClientController(IClientRepo clientRepo, ISessionManager sessionManager)
         {
             _clientRepo = clientRepo;
+            _sessionManager = sessionManager;
         }
 
         // GET: ClientController
@@ -47,7 +50,23 @@ namespace SR_MVC.Controllers
         // GET: ClientController/Create
         public ActionResult Create()
         {
-            return View();
+            RegisterForm form = new RegisterForm();
+            return View(form);
+        }
+
+        [HttpPost]
+
+        public IActionResult Create(RegisterForm form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(form);
+            }
+
+            Client newClient = new Client(form.FirstName, form.LastName, form.Bdate, form.Email, form.Pass, form.CCard, form.IdCard, default, default, true);
+
+            _clientRepo.Register(newClient);
+            return RedirectToAction("Index");
         }
 
         // POST: ClientController/Create
