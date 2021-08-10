@@ -67,6 +67,8 @@
     <Build Include="Tables\Planets.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="Procedures\AddBooking.sql" />
+    <Build Include="Procedures\RegisterClient.sql" />
+    <Build Include="Procedures\AuthClient.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PopulateTables.sql" />

@@ -23,7 +23,8 @@ namespace SR_DAL.Mappers
                 ccard = (string)r["ccard"],
                 idcard = (string)r["idcard"],
                 book_count = (int)r["book_count"],
-                is_vip = (bool)r["is_vip"]
+                is_vip = (bool)r["is_vip"],
+                is_healthy = (bool)r["is_healthy"]
             };
         }
         internal static Planet ToPlanet(this IDataRecord r)

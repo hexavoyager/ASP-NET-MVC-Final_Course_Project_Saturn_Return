@@ -19,16 +19,17 @@ namespace SR_BLL.Mappers
                 lname = c.lname,
                 bdate = c.bdate,
                 email = c.email,
-                pass = null,
+                pass = c.pass,
                 ccard = c.ccard,
                 idcard = c.idcard,
                 book_count = c.book_count,
-                is_vip = c.is_vip
+                is_vip = c.is_vip,
+                is_healthy = c.is_healthy
             };
         }
         internal static B.Client ToBLL(this D.Client c)
         {
-            return new B.Client(c.Id, c.fname, c.lname, c.bdate, c.email, c.pass, c.ccard, c.idcard, c.book_count, c.is_vip);
+            return new B.Client(c.Id, c.fname, c.lname, c.bdate, c.email, c.pass, c.ccard, c.idcard, c.book_count, c.is_vip, c.is_healthy);
         }
         internal static B.Planet ToBLL(this D.Planet p)
         {

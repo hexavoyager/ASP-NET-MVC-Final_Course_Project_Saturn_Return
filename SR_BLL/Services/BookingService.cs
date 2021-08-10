@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SR_BLL.Services
 {
-    class BookingService : IBookingRepo
+    public class BookingService : IBookingRepo
 
     {
         private readonly DR.IBookingRepo _bookingRepo;

@@ -23,5 +23,14 @@ namespace SR_BLL.Services
         {
             return _clientRepo.Get(id)?.ToBLL();
         }
+        public void Register(Client client)
+        {
+            _clientRepo.Register(client.ToDAL());
+        }
+
+        public Client Login(string email, string pass)
+        {
+            return _clientRepo.Login(email, pass)?.ToBLL();
+        }
     }
 }
