@@ -61,7 +61,7 @@ namespace SR_MVC
             services.AddScoped<BR.IClientRepo, BS.ClientService>();
             services.AddScoped<BR.IPlanetRepo, BS.PlanetService>();
             services.AddScoped<BR.IBookingRepo, BS.BookingService>();
-            services.AddSingleton <ISessionManager, SessionManager>();
+            services.AddScoped <ISessionManager, SessionManager>();
 
 
         }

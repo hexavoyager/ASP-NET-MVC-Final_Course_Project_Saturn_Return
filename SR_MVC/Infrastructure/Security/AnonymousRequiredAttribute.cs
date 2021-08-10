@@ -23,7 +23,7 @@ namespace SR_MVC.Infrastructure.Security
 
                 if (sessionManager.Client is not null)
                 {
-                    context.Result = new RedirectToActionResult("Index", "Contact", null);
+                    context.Result = new RedirectToActionResult("Index", "Home", null);
                 }
             }
         }

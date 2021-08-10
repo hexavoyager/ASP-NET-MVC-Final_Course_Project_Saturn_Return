@@ -14,7 +14,7 @@ namespace SR_DAL.Mappers
         {
             return new Client()
             {
-                Id = (int)r["Id"],
+                //Id = (int)r["Id"],
                 fname = (string)r["fname"],
                 lname = (string)r["lname"],
                 bdate = (DateTime)r["bdate"],
