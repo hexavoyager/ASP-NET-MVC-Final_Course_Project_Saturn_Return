@@ -18,25 +18,26 @@ namespace SR_MVC.Models.Forms
         [Required]
         [DisplayName("Destination planet:")]
         //[PlanetIdValidationAttribute]
-        public string Name { get; set; }
-        public IEnumerable<SelectListItem> Planets { get; set; }
-        public int id { get; set; }
+        public int planet { get; set; }
 
         [Required]
         [DisplayName("Jupiter stop-over:")]
-        public bool Stopover { get; set; }
+        public bool stopover { get; set; }
 
         [Required]
         [DisplayName("Departure date:")]
-        [Range(typeof(DateTime), "1/1/1999", "1/1/2033", ErrorMessage = "Date is out of range!")]
-        public DateTime DateA { get; set; }
+        //[Range(typeof(DateTime), "1/1/1945", "1/1/2123", ErrorMessage = "Date is out of range!")]
+        public DateTime dateA { get; set; }
 
         [Required]
         [DisplayName("Return date:")]
-        public DateTime DateB { get; set; }
+        //[Range(typeof(DateTime), "1/1/1945", "1/1/2123", ErrorMessage = "Date is out of range!")]
+        public DateTime dateB { get; set; }
 
         [Required]
         [DisplayName("1st class option:")]
-        public bool Is_1stclass { get; set; }
+        public bool is_1stclass { get; set; }
+
+        public IEnumerable<SelectListItem> Planets { get; set; }
     };
 }

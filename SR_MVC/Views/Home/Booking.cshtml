@@ -5,7 +5,7 @@
 @model SR_MVC.Models.Forms.HomeForm
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Booking";
 
 }
 
@@ -16,34 +16,37 @@
 
 <div class="row">
     <div>
-        <form asp-action="Index" method="post">
+        <form asp-action="Booking" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <select asp-for="Name" asp-items="Model.Planets" class="form-control" onchange="displayStopover(this)">
+                <label asp-for="planet" class="control-label"></label>
+                <select asp-for="planet" asp-items="Model.Planets" class="form-control" onchange="displayStopover(this)">
                     <option value="0">Choose a destination planet</option>
                 </select>
             </div>
             <div class="form-group" id="stopover" style="display: none">
-                <label asp-for="Stopover" class="control-label"></label>
-                <input id="stopoverInput" asp-for="Stopover" type="checkbox" name="Stopover" />
+                <label asp-for="stopover" class="control-label"></label>
+                <input id="stopoverInput" asp-for="stopover" type="checkbox" name="Stopover" />
             </div>
             <div class="form-group">
-                <label asp-for="DateA" class="control-label"></label>
-                <input asp-for="DateA" type="date" name="dateA" />
+                <label asp-for="dateA" class="control-label"></label>
+                <input asp-for="dateA" type="date" name="dateA" />
             </div>
             <div class="form-group">
-                <label asp-for="DateB" class="control-label"></label>
-                <input asp-for="DateB" type="date" name="dateA" />
+                <label asp-for="dateB" class="control-label"></label>
+                <input asp-for="dateB" type="date" name="dateA" />
             </div>
             <div class="form-group">
-                <label asp-for="Is_1stclass" class="control-label"></label>
-                <input asp-for="Is_1stclass" type="checkbox" name="1st Class" />
+                <label asp-for="is_1stclass" class="control-label"></label>
+                <input asp-for="is_1stclass" type="checkbox" name="1st Class" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Search for launches..." class="btn btn-primary" />
+                <input type="submit" value="Check for availabilities" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -5,7 +5,7 @@ namespace SR_BLL.Data
 {
     public class Booking
     {
-        public Booking(int clientId, bool planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
+        public Booking(int clientId, int planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
         {
             this.clientId = clientId;
             this.planet = planet;
@@ -17,14 +17,14 @@ namespace SR_BLL.Data
             this.price = price;
         }
 
-        internal Booking(int Id, int clientId, bool planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
+        internal Booking(int Id, int clientId, int planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
         {
             this.Id = Id;
         }
 
         public int Id { get; set; }
         public int clientId { get; set; }
-        public bool planet { get; set; }
+        public int planet { get; set; }
         public bool stopover { get; set; }
         public int planet_portId { get; set; }
         public DateTime dateA { get; set; }

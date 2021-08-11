@@ -24,12 +24,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Booking">Booking</a>
-                        </li>
+                        @if (sessionManager.Client != null)
+                        {
+                            <li class="nav-item">
+                               <a class="nav-link text-success" asp-area="" asp-controller="Home" asp-action="Booking" >Booking</a>
+                            </li>
+                            }
+
                         @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="ShowClient">Client</a>
-                        </li>*@
+            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="ShowClient">Client</a>
+        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
                         </li>
@@ -51,9 +55,13 @@
         @if (sessionManager.Client != null)
         {
             <div class="container">
-                <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! This is your nth trip!</p>
+                <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
             </div>
         }
+        else
+        { <div class="container">
+                Welcome! Login to book an interstellar flight.
+            </div>  }
 
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

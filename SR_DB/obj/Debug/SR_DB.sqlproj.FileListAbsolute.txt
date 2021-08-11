@@ -3,4 +3,3 @@ C:\Users\Norman\Desktop\SR FINAL\SR_DB\bin\Debug\SR_DB.dll
 C:\Users\Norman\Desktop\SR FINAL\SR_DB\bin\Debug\SR_DB.pdb
 C:\Users\Norman\Desktop\SR FINAL\SR_DB\obj\Debug\SR_DB.dll
 C:\Users\Norman\Desktop\SR FINAL\SR_DB\obj\Debug\SR_DB.pdb
-C:\Users\Norman\Desktop\SR FINAL\SR_DB\obj\Debug\SR_DB.sqlproj.AssemblyReference.cache

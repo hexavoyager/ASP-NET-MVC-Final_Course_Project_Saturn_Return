@@ -2,7 +2,7 @@
 CREATE TABLE [dbo].[Bookings]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-    [clientId] INT NULL, 
+    [clientId] INT NOT NULL, 
     [planet] BIT NOT NULL, 
     [stopover] BIT NOT NULL,
     [planet_portId] INT  NULL,

@@ -15,7 +15,7 @@ namespace SR_DAL.Services
         {
             _conn = conn;
         }
-        public void Create(int clientId, bool planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
+        public void Create(int clientId, int planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
         {
             Command cmd = new Command("AddBooking", true);
             cmd.AddParameter("clientId", clientId);

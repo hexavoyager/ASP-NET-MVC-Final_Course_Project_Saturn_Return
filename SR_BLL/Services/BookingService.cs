@@ -18,10 +18,9 @@ namespace SR_BLL.Services
         {
             _bookingRepo = bookingRepo;
         }
-
-        public void Create(int clientId, bool planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
+        public void Create(int clientId, int planet, bool stopover, int planet_portId, DateTime dateA, DateTime dateB, bool is_1stclass, int price)
         {
-            throw new NotImplementedException();
+           _bookingRepo.Create(clientId, planet, stopover, planet_portId, dateA, dateB, is_1stclass, price);
         }
 
         public Booking Get(int id)

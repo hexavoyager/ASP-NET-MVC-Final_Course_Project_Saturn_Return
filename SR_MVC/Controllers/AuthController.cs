@@ -52,7 +52,15 @@ namespace SR_MVC.Controllers
             {
                 Id = client.Id,
                 LastName = client.lname,
-                FirstName = client.fname
+                FirstName = client.fname,
+                Bdate = client.bdate,
+                Email = client.email,
+                Ccard = client.ccard,
+                Idcard = client.idcard,
+                Book_count = client.book_count,
+                Is_vip = client.is_vip,
+                Is_healthy = client.is_healthy
+
             };
 
             return RedirectToAction("Index");

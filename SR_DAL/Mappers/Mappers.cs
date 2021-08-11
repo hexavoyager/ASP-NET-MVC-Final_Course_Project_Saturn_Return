@@ -48,7 +48,7 @@ namespace SR_DAL.Mappers
             {
                 Id = (int)r["Id"],
                 clientId = (int)r["clientId"],
-                planet = (bool)r["planet"],
+                planet = (int)r["planet"],
                 stopover = (bool)r["stopover"],
                 planet_portId = (int)r["planet_portId"],
                 dateA = (DateTime)r["dateA"],

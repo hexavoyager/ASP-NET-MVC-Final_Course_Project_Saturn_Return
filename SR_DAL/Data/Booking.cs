@@ -7,7 +7,7 @@ namespace SR_DAL.Data
     {
         public int Id { get; set; }
         public int clientId { get; set; }      
-        public bool planet { get; set; }
+        public int planet { get; set; }
         public bool stopover { get; set; }
         public int planet_portId { get; set; }
         public DateTime dateA { get; set; }

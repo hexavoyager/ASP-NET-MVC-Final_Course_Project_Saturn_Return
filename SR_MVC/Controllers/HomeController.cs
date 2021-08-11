@@ -29,11 +29,41 @@ namespace SR_MVC.Controllers
         }
         public IActionResult Booking()
         {
-            HomeForm form = new HomeForm();
-            form.Planets = GetPlanets();
-            return View(form);
+            if (_sessionManager.Client != null)
+            {
+                HomeForm form = new HomeForm();
+                form.Planets = GetPlanets();
+                return View(form);
+            }
+
+            return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult Booking(HomeForm form)
+        {
+            if (!ModelState.IsValid)
+            {
+                form.Planets = GetPlanets();
+                return View(form);
+            }
+
+            Booking b = new Booking()
+            {
+                clientId = _sessionManager.Client.Id,
+                planet = form.planet,
+                stopover = form.stopover,
+                planet_portId = 15,
+                dateA = form.dateA,
+                dateB = form.dateB,
+                is_1stclass = form.is_1stclass,
+                price = 100
+            };
+
+            _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+
+            return RedirectToAction("Index");
+        }
         public IActionResult Index()
         {
             return View();
@@ -53,34 +83,6 @@ namespace SR_MVC.Controllers
         {
             return _planetRepo.Get().Select(c => new SelectListItem(c.name, c.id.ToString()) { Selected = (id.HasValue && c.id == id.Value) });
         }
-
-        [HttpPost]
-
-        public IActionResult Booking(HomeForm form)
-        {
-            if (!ModelState.IsValid)
-            {
-                form.Planets = GetPlanets();
-                return View(form);
-            }
-
-            Booking b = new Booking()
-            {
-                clientId = _sessionManager.Client.Id,
-                planet = true,
-                stopover = form.Stopover,
-                planet_portId = 15,
-                dateA = form.DateA,
-                dateB = form.DateB,
-                is_1stclass = form.Is_1stclass,
-                price = 100
-            };
-
-            _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
-
-            return RedirectToAction("Index");
-        }
-
 
     }
 }
