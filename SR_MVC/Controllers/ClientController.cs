@@ -63,9 +63,12 @@ namespace SR_MVC.Controllers
                 return View(form);
             }
 
-            Client newClient = new Client(form.FirstName, form.LastName, form.Bdate, form.Email, form.Pass, form.CCard, form.IdCard, default, default, true);
+            string isVip = "bezos";
+
+            Client newClient = new Client(form.FirstName, form.LastName, form.Bdate, form.Email, form.Pass, form.CCard, form.IdCard, default, form.LastName.ToLower() == isVip, true);
 
             _clientRepo.Register(newClient);
+            
             return RedirectToAction("Index");
         }
 

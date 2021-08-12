@@ -1,0 +1,14 @@
+﻿<h2>
+    Welcome! Check for <a href="/Home/Booking">our next launches into space.</a>
+</h2>
+
+@if (sessionManager.Client != null)
+{
+    <div class="container">
+        <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
+    </div>
+    if (sessionManager.Client.Is_healthy == false)
+    {
+        <div class="container text-danger">Warning! Health authorities have flagged you as a non-suitable candidate for Jupiter's atmosphere'. If you plan to travel to Jupiter, you must purchase an Oxygen Transformator.</div>
+    };
+}

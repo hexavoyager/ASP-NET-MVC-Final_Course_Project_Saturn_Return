@@ -14,7 +14,6 @@ namespace SR_DAL.Data
         public string idcard { get; set; }
         public int book_count { get; set; }
         public bool is_vip { get; set; }
-
         public bool is_healthy { get; set; }
     }
 }

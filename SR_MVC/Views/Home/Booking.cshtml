@@ -1,23 +1,26 @@
 ﻿@using SR_BLL.Data
 @using SR_BLL.Repos
-@using SR_BLL.Services
+@using S = SR_BLL.Services
+@using Tools.Connections.Database; 
 
 @model SR_MVC.Models.Forms.HomeForm
 
 @{
     ViewData["Title"] = "Booking";
-
 }
 
 <div class="text-center">
     <h1 class="display-4">Your interplanetary journey starts here.</h1>
 </div>
 
-
 <div class="row">
     <div>
         <form asp-action="Booking" method="post">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div id="atmosphere" class="atmosphere">
+
+            </div>
             <div class="form-group">
                 <label asp-for="planet" class="control-label"></label>
                 <select asp-for="planet" asp-items="Model.Planets" class="form-control" onchange="displayStopover(this)">
@@ -25,8 +28,12 @@
                 </select>
             </div>
             <div class="form-group" id="stopover" style="display: none">
+                <p>When travelling towards Saturn, you have the option to stop by Jupiter.</p>
+                <div id="infoJupiter" class="atmosphere">
+
+                </div>
                 <label asp-for="stopover" class="control-label"></label>
-                <input id="stopoverInput" asp-for="stopover" type="checkbox" name="Stopover" />
+                <input id="stopoverInput" asp-for="stopover" type="checkbox" name="Stopover" onclick="onStopoverChange()" />
             </div>
             <div class="form-group">
                 <label asp-for="dateA" class="control-label"></label>
@@ -50,3 +57,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

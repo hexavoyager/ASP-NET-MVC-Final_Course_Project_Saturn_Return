@@ -1,16 +1,16 @@
-﻿using System;
+﻿using SR_BLL.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using B = SR_BLL.Data;
 using D = SR_DAL.Data;
 
 namespace SR_BLL.Mappers
 {
     internal static class Mappers {
-        internal static D.Client ToDAL(this B.Client c)
+        internal static D.Client ToDAL(this Client c)
         {
             return new D.Client()
             {
@@ -27,18 +27,18 @@ namespace SR_BLL.Mappers
                 is_healthy = c.is_healthy
             };
         }
-        internal static B.Client ToBLL(this D.Client c)
+        internal static Client ToBLL(this D.Client c)
         {
-            return new B.Client(c.Id, c.fname, c.lname, c.bdate, c.email, c.pass, c.ccard, c.idcard, c.book_count, c.is_vip, c.is_healthy);
+            return new Client(c.Id, c.fname, c.lname, c.bdate, c.email, c.pass, c.ccard, c.idcard, c.book_count, c.is_vip, c.is_healthy);
         }
-        internal static B.Planet ToBLL(this D.Planet p)
+        internal static Planet ToBLL(this D.Planet p)
         {
-            return new B.Planet(p.id, p.name, p.capacity, p.distance_m, p.distance_h, p.fuel_req, p.atmosphere, p.ports_count);
+            return new Planet(p.id, p.name, p.capacity, p.distance_m, p.distance_h, p.fuel_req, p.atmosphere, p.ports_count);
         }
 
-        internal static B.Booking ToBLL(this D.Booking b)
+        internal static Booking ToBLL(this D.Booking b)
         {
-            return new B.Booking(b.Id, b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+            return new Booking(b.Id, b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
         }
     }
     

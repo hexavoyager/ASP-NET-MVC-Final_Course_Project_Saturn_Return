@@ -42,7 +42,7 @@ namespace SR_MVC.Controllers
 
             Client client = _clientRepo.Login(form.Email, form.Pass);
 
-            if(client is null)
+            if (client is null)
             {
                 ModelState.AddModelError("", "Something's wrong...");
                 return View(form);
@@ -63,7 +63,7 @@ namespace SR_MVC.Controllers
 
             };
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Logged");
         }
 
         [AnonymousRequired]
@@ -79,9 +79,16 @@ namespace SR_MVC.Controllers
             if (!ModelState.IsValid)
                 return View(form);
 
-            _clientRepo.Register(new Client(form.FirstName, form.LastName, form.Bdate, form.Email, form.Pass, form.CCard, form.IdCard, default, default, true));
+            Client newClient = new Client(form.FirstName, form.LastName, form.Bdate, form.Email, form.Pass, form.CCard, form.IdCard, default, form.LastName.ToLower() == "bezos", true);
+
+            _clientRepo.Register(newClient);
 
             return RedirectToAction("Login");
+        }
+
+        public IActionResult Logged()
+        {
+            return View();
         }
     }
 }

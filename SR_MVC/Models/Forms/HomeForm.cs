@@ -13,8 +13,13 @@ namespace SR_MVC.Models.Forms
     public class HomeForm
 
     {
-        public static DateTime now = DateTime.Now;
 
+        public HomeForm()
+        {
+            dateA = DateTime.Now.Date;
+            dateB = DateTime.Now.Date;
+        }
+        
         [Required]
         [DisplayName("Destination planet:")]
         //[PlanetIdValidationAttribute]
@@ -37,7 +42,6 @@ namespace SR_MVC.Models.Forms
         [Required]
         [DisplayName("1st class option:")]
         public bool is_1stclass { get; set; }
-
         public IEnumerable<SelectListItem> Planets { get; set; }
     };
 }

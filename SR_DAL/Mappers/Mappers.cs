@@ -1,10 +1,6 @@
 ﻿using SR_DAL.Data;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SR_DAL.Mappers
 {
@@ -14,7 +10,7 @@ namespace SR_DAL.Mappers
         {
             return new Client()
             {
-                //Id = (int)r["Id"],
+                Id = (int)r["Id"],
                 fname = (string)r["fname"],
                 lname = (string)r["lname"],
                 bdate = (DateTime)r["bdate"],

@@ -84,5 +84,19 @@ namespace SR_MVC.Controllers
             return _planetRepo.Get().Select(c => new SelectListItem(c.name, c.id.ToString()) { Selected = (id.HasValue && c.id == id.Value) });
         }
 
+
+        public IActionResult GetPlanetInfo(int id)
+        {
+
+            Planet p = _planetRepo.Get(id);
+            DisplayPlanet dp = new DisplayPlanet()
+            {
+                Name = p.name,
+                Atmosphere = p.atmosphere
+            };
+
+            return PartialView("_atmosphere", dp);
+        }
+
     }
 }

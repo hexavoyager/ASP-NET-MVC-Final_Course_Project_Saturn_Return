@@ -3,7 +3,7 @@
 	@Passwd NVARCHAR(50)
 AS
 BEGIN
-	SELECT fname, lname, bdate, email, pass, ccard, idcard, book_count, is_vip, is_healthy
+	SELECT Id, fname, lname, bdate, email, pass, ccard, idcard, book_count, is_vip, is_healthy
 	FROM [Clients] 
 	WHERE email = @Email
 	AND pass = @Passwd

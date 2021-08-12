@@ -7,7 +7,7 @@
 	@ccard NVARCHAR(16),
 	@idcard NVARCHAR(12),
 	@book_count INT = 0,
-	@is_vip BIT = 0,
+	@is_vip BIT,
 	@is_healthy BIT = 1
 AS
 BEGIN

@@ -11,11 +11,13 @@ namespace SR_MVC.Models.Forms
         [Required]
         [MaxLength(384)]
         [EmailAddress]
+        [Display(Name="Email:", Prompt = "Enter your email address.")]
         public string Email { get; set; }
 
         [Required]
         [MaxLength(20)]
         [DataType(DataType.Password)]
+        [Display(Name ="Password:", Prompt = "Enter your password.")]
         public string Pass { get; set; }
     }
 }

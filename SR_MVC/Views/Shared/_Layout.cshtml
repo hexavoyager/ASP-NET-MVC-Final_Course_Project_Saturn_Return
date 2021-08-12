@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SR_MVC</title>
+    <title>@ViewData["Title"] - SATURN-RETURN </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,7 +11,22 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SR_MVC</a>
+                <div class="night">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <div id="logo">
+                    <img src="https://image.flaticon.com/icons/png/512/547/547440.png" alt="Saturn-Return ITA" width=170 />
+                </div>
+                <div id="name">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <p><h2><strong>SATURN-RETURN</strong></h2></p>
+                        <p>Interstellar Travel Agency</p>
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,19 +36,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         @if (sessionManager.Client != null)
                         {
                             <li class="nav-item">
-                               <a class="nav-link text-success" asp-area="" asp-controller="Home" asp-action="Booking" >Booking</a>
+                                <a class="nav-link text-success" asp-area="" asp-controller="Home" asp-action="Booking">Booking</a>
                             </li>
-                            }
-
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="ShowClient">Client</a>
-        </li>*@
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
                         </li>
@@ -57,16 +65,21 @@
             <div class="container">
                 <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
             </div>
+            if (sessionManager.Client.Is_healthy == false)
+            {
+                <div class="container text-danger">Warning! Health authorities have flagged you as a non-suitable candidate for Jupiter's atmosphere'. If you plan to travel to Jupiter, you must purchase an Oxygen Transformator.</div>
+            };
         }
         else
         { <div class="container">
                 Welcome! Login to book an interstellar flight.
-            </div>  }
+            </div>}
 
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
