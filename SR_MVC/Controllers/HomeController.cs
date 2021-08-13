@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using SR_BLL.Services;
 using SR_DAL.Data;
 using SR_DAL.Repos;
 using SR_MVC.Infrastructure.Session;
 using SR_MVC.Models;
+using SR_MVC.Models.APIs;
 using SR_MVC.Models.Forms;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SR_MVC.Controllers
@@ -122,6 +125,28 @@ namespace SR_MVC.Controllers
             }));
             
         }
+
+        #region API
+        public async Task<IActionResult> Weather()
+        {
+            Properties p = new Properties();
+            string url = "https://api.weather.gov/points/28,-80";
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
+                using (var response = await httpClient.GetAsync(url))
+                {
+                    
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    
+                    
+                    p = JsonConvert.DeserializeObject<Properties>(apiResponse);
+                }
+            }
+
+            return View(p);
+        }
+        #endregion
 
     }
 }

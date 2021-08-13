@@ -17,6 +17,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Tools.Connections.Database;
+using Polly;
 
 namespace SR_MVC
 {
@@ -63,6 +64,9 @@ namespace SR_MVC
             services.AddScoped<BR.IBookingRepo, BS.BookingService>();
             services.AddScoped <ISessionManager, SessionManager>();
 
+            #region APICALL
+            services.AddHttpClient();
+            #endregion
 
         }
 
@@ -76,7 +80,6 @@ namespace SR_MVC
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
