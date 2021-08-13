@@ -28,6 +28,10 @@ namespace SR_BLL.Services
             _clientRepo.Register(client.ToDAL());
         }
 
+        public void UpdateCount(int id, int book_count)
+        {
+            _clientRepo.UpdateCount(id, book_count);
+        }
         public Client Login(string email, string pass)
         {
             return _clientRepo.Login(email, pass)?.ToBLL();

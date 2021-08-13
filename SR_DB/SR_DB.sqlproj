@@ -69,6 +69,7 @@
     <Build Include="Procedures\AddBooking.sql" />
     <Build Include="Procedures\RegisterClient.sql" />
     <Build Include="Procedures\AuthClient.sql" />
+    <Build Include="Procedures\UpdateClient.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PopulateTables.sql" />

@@ -32,7 +32,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul id="menu" class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -50,6 +50,10 @@
                         </li>
                     </ul>
                 </div>
+                <div class="api">
+                    
+
+                </div>
             </div>
         </nav>
     </header>
@@ -65,10 +69,6 @@
             <div class="container">
                 <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
             </div>
-            if (sessionManager.Client.Is_healthy == false)
-            {
-                <div class="container text-danger">Warning! Health authorities have flagged you as a non-suitable candidate for Jupiter's atmosphere'. If you plan to travel to Jupiter, you must purchase an Oxygen Transformator.</div>
-            };
         }
         else
         { <div class="container">

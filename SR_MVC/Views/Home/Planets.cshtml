@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SR_MVC.Models.DisplayPlanet>
+
+@{
+    ViewData["Title"] = "Planets";
+}
+
+<div class="flex-container">
+    <div id="flex-item1"><h3>Our destination planets</h3></div>
+    <div id="flex-item2"><table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Atmosphere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance_m)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance_h)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ports_count)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.Name)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Atmosphere)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distance_m)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distance_h)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ports_count)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table></div>
+</div>
+
+

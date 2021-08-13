@@ -48,5 +48,13 @@ namespace SR_DAL.Services
 
             return _conn.ExecuteReader(cmd, dr => dr.ToClient()).SingleOrDefault();
         }
+
+        public void UpdateCount(int id, int book_count)
+        {
+            Command cmd = new Command("UpdateClient", true);
+            cmd.AddParameter("id", id);
+            cmd.AddParameter("book_count", book_count);
+            _conn.ExecuteNonQuery(cmd);
+        }
     }
 }

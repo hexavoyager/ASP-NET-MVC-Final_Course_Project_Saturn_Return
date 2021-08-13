@@ -55,3 +55,4 @@ function onStopoverChange() {
         $("#infoJupiter").hide();
     }
 }
+

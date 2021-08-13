@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using SR_BLL.Services;
 using SR_DAL.Data;
 using SR_DAL.Repos;
 using SR_MVC.Infrastructure.Session;
@@ -19,14 +20,18 @@ namespace SR_MVC.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IPlanetRepo _planetRepo;
         private readonly IBookingRepo _bookingRepo;
+        private readonly IClientRepo _clientRepo;
         private readonly ISessionManager _sessionManager;
-        public HomeController(ILogger<HomeController> logger, IPlanetRepo planetRepo, IBookingRepo bookingRepo, ISessionManager sessionManager)
+
+        public HomeController(ILogger<HomeController> logger, IPlanetRepo planetRepo, IBookingRepo bookingRepo, IClientRepo clientRepo, ISessionManager sessionManager)
         {
             _logger = logger;
             _planetRepo = planetRepo;
             _bookingRepo = bookingRepo;
+            _clientRepo = clientRepo;
             _sessionManager = sessionManager;
         }
+
         public IActionResult Booking()
         {
             if (_sessionManager.Client != null)
@@ -62,6 +67,8 @@ namespace SR_MVC.Controllers
 
             _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
 
+            _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
+
             return RedirectToAction("Index");
         }
         public IActionResult Index()
@@ -92,10 +99,28 @@ namespace SR_MVC.Controllers
             DisplayPlanet dp = new DisplayPlanet()
             {
                 Name = p.name,
-                Atmosphere = p.atmosphere
+                Atmosphere = p.atmosphere,
+                Distance_m = p.distance_m,
+                Distance_h = p.distance_h,
+                Ports_count = p.ports_count
             };
 
             return PartialView("_atmosphere", dp);
+        }
+
+        public IActionResult Planets()
+        {
+            IEnumerable<Planet> Planets = _planetRepo.Get().ToList();
+
+            return View(Planets.Select(p => new DisplayPlanet()
+            {
+                Name = p.name,
+                Atmosphere = p.atmosphere,
+                Distance_m = p.distance_m,
+                Distance_h = p.distance_h,
+                Ports_count = p.ports_count
+            }));
+            
         }
 
     }

@@ -2,19 +2,60 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+/*    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;*/
+}
+
+#flex-item1 {
+    flex-basis: 500px;
+    padding: 30px;
+    transition: background-color, 300ms;
+}
+
+#flex-item2 {
+    border-left: 2px solid rgba(255, 255, 255, 0.18);
+    padding: 30px;
+    flex-basis: 1000px;
+    transition: background-color, 300ms;
+}
+
+#flex-item1:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+#flex-item2:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+th{
+    color: white;
+}
+
+td{
+    color: greenyellow;
+}
 
 header {
     margin-bottom: 100px;
     box-shadow: rgb(8,32,5), 100px 100px inset;
-    border-bottom: 1px solid #F9A52B;
 }
 body {
-    background: rgb(8,32,5);
-    background: linear-gradient(90deg, rgba(101, 103, 171, 0.91) 0%, rgba(28, 82, 164, 0.36)100%);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     color: white;
     font-family: 'Georama', sans-serif;
 }
 
+menu{
+    align-items: stretch;
+}
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -27,8 +68,9 @@ a.navbar-brand {
 }
 
 /* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
+a:link {
+    color: white;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -64,28 +106,6 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem 2rem rgba(0, 0, 0, .05);
-}
-
-.custom_btn {
-    position: relative;
-    display: inline-block;
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    align-items: center;
-    vertical-align: central;
-    font-weight: bold;
-    font-size: 24px;
-    margin: 10px;
-    text-decoration: none;
-    background: white;
-    transition: 0.6s;
-}
-
-.custom_btn:hover {
-    background: #27536B;
-    color: white;
-    text-decoration: none;
 }
 
 
@@ -218,9 +238,9 @@ body {
     animation-delay: 1.2s;
 }
 
-    .star:nth-child(2)::before, .star:nth-child(2)::after {
+.star:nth-child(2)::before, .star:nth-child(2)::after {
         animation-delay: 1.2s;
-    }
+}
 
 .star:nth-child(3) {
     top: calc(50% - 0px);
@@ -228,9 +248,9 @@ body {
     animation-delay: 1.4s;
 }
 
-    .star:nth-child(3)::before, .star:nth-child(3)::after {
+.star:nth-child(3)::before, .star:nth-child(3)::after {
         animation-delay: 1.4s;
-    }
+}
 
 .star:nth-child(4) {
     top: calc(50% - -50px);
@@ -238,9 +258,9 @@ body {
     animation-delay: 1.6s;
 }
 
-    .star:nth-child(4)::before, .star:nth-child(4)::after {
+.star:nth-child(4)::before, .star:nth-child(4)::after {
         animation-delay: 1.6s;
-    }
+}
 
 .star:nth-child(5) {
     top: calc(50% - -100px);
@@ -248,7 +268,112 @@ body {
     animation-delay: 1.8s;
 }
 
-    .star:nth-child(5)::before, .star:nth-child(5)::after {
+.star:nth-child(5)::before, .star:nth-child(5)::after {
         animation-delay: 1.8s;
-    }
+}
     /*STARS*/
+
+/*button magic*/
+
+button, .mainbtn, button::after {
+    width: 200px;
+    height: 86px;
+    font-size: 18px;
+    font-family: 'Bebas Neue', cursive;
+    background: linear-gradient(45deg, transparent 5%, #D14A14 5%);
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 88px;
+    box-shadow: 6px 0px 0px #00E6F6;
+    outline: transparent;
+    position: relative;
+}
+
+    .mainbtn::after, button::after {
+        --slice-0: inset(50% 50% 50% 50%);
+        --slice-1: inset(80% -6px 0 0);
+        --slice-2: inset(50% -6px 30% 0);
+        --slice-3: inset(10% -6px 85% 0);
+        --slice-4: inset(40% -6px 43% 0);
+        --slice-5: inset(80% -6px 5% 0);
+        content: '...//1---';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+        text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+        clip-path: var(--slice-0);
+    }
+
+.mainbtn:hover::after, button:hover::after {
+            animation: 1s glitch;
+            animation-timing-function: steps(2, end);
+}
+
+.mainbtn:link{
+            text-decoration: none;
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
+
+/*button magic end*/

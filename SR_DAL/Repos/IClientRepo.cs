@@ -11,6 +11,8 @@ namespace SR_DAL.Repos
     {
         Client Get(int id);
         void Register(Client client);
+        void UpdateCount(int id, int book_count);
         Client Login(string email, string pass);
+        
     }
 }

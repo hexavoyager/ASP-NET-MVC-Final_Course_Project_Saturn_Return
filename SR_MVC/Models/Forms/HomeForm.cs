@@ -22,7 +22,6 @@ namespace SR_MVC.Models.Forms
         
         [Required]
         [DisplayName("Destination planet:")]
-        //[PlanetIdValidationAttribute]
         public int planet { get; set; }
 
         [Required]
@@ -31,12 +30,12 @@ namespace SR_MVC.Models.Forms
 
         [Required]
         [DisplayName("Departure date:")]
-        //[Range(typeof(DateTime), "1/1/1945", "1/1/2123", ErrorMessage = "Date is out of range!")]
+        [DateTimeRange]
         public DateTime dateA { get; set; }
 
         [Required]
         [DisplayName("Return date:")]
-        //[Range(typeof(DateTime), "1/1/1945", "1/1/2123", ErrorMessage = "Date is out of range!")]
+        [DateTimeRange]
         public DateTime dateB { get; set; }
 
         [Required]
