@@ -1,14 +1,26 @@
-﻿<h2>
-    Welcome! Check for <a href="/Home/Booking">our next launches into space.</a>
-</h2>
+﻿
+<div class="flex-container">
+    <div id="flex-item1"><h2>
+    Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName!
+</h2></div>
+    <div id="flex-item2">
+        @if (sessionManager.Client != null)
+        {
+            <div class="container">
+                <p>Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
+            </div>
 
-@if (sessionManager.Client != null)
-{
-    <div class="container">
-        <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
+            <a class="mainbtn" href="/Home/Booking">Book a spaceflight!</a>
+
+            if (sessionManager.Client.Is_healthy == false)
+            {
+                <div class="warning">
+                    <h2>Warning!</h2>
+                    <p>Health authorities have flagged you as a non-suitable candidate for Jupiter's atmosphere'.
+        </div>
+            };
+        }
     </div>
-    if (sessionManager.Client.Is_healthy == false)
-    {
-        <div class="container text-danger">Warning! Health authorities have flagged you as a non-suitable candidate for Jupiter's atmosphere'. If you plan to travel to Jupiter, you must purchase an Oxygen Transformator.</div>
-    };
-}
+</div>
+
+

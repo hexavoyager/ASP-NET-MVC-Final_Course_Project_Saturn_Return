@@ -69,7 +69,7 @@ namespace SR_MVC.Controllers
 
             _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Logged", "Auth");
         }
         public IActionResult Index()
         {

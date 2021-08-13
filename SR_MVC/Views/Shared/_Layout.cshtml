@@ -22,10 +22,10 @@
                     <img src="https://image.flaticon.com/icons/png/512/547/547440.png" alt="Saturn-Return ITA" width=170 />
                 </div>
                 <div id="name">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    
                         <p><h2><strong>SATURN-RETURN</strong></h2></p>
                         <p>Interstellar Travel Agency</p>
-                    </a>
+
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -33,26 +33,55 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul id="menu" class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         @if (sessionManager.Client != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-success" asp-area="" asp-controller="Home" asp-action="Booking">Booking</a>
+                                <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="Auth"
+                                   asp-action="Logged">
+                                    Home
+                                </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link alert-success"
+                                   asp-area=""
+                                   asp-controller="Home"
+                                   asp-action="Booking">
+                                    <strong>Book a launch</strong>
+                                </a>
+                            </li>
+
                         }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="Home"
+                                   asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+}
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            <a class="nav-link text-dark"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Planets">
+                                Destination planets
+                            </a>
                         </li>
                     </ul>
-                </div>
-                <div class="api">
-                    
-
                 </div>
             </div>
         </nav>

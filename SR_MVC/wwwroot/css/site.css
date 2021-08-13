@@ -34,6 +34,24 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: rgba(255, 255, 255, 0.11);
 }
 
+.warning {
+    padding: 30px;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.15);
+    animation: pulse-animation 0.5s infinite;
+}
+
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px #D14A14;
+    }
+
+    100% {
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    }
+}
+
 th{
     color: white;
 }
@@ -141,7 +159,8 @@ body {
 #name {
     position: inherit;
     width: 300px;
-    margin: 20px;
+    margin: 10px;
+    color: #04033F;
 }
 
 #logo {
