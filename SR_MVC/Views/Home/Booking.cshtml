@@ -7,11 +7,15 @@
 
 @{
     ViewData["Title"] = "Booking";
+    var invalidDate = ViewBag.Name;
 }
 
 <div class="flex-container">
     <div id="flex-item1">
         <h1 class="display-4">Your interplanetary journey starts here.</h1>
+        @if (@invalidDate == "invalid"){
+        <br />
+        <p>Seems like this isn't a suitable date for a launch. Winds are equal or stronger to 7mph on our launch site at Cape Canaveral. Please pick another date.</p>}
     </div>
     <div id="flex-item2">
         <div class="row">

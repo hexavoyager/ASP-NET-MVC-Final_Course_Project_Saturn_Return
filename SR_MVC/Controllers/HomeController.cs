@@ -18,6 +18,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+
 namespace SR_MVC.Controllers
 {
     public class HomeController : Controller
@@ -52,27 +53,71 @@ namespace SR_MVC.Controllers
         [HttpPost]
         public IActionResult Booking(HomeForm form)
         {
+            #region Weather API Call
+            HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://api.weather.gov/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
+                HttpResponseMessage httpResponseMessage = client.GetAsync("gridpoints/LWX/81,50/forecast").Result;
+                httpResponseMessage.EnsureSuccessStatusCode();
+                string json = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                JsonDocument jsonDocument = JsonDocument.Parse(json);
+                JsonElement rootElement = jsonDocument.RootElement;
+                JsonElement properties = rootElement.GetProperty("properties");
+                JsonElement periods = properties.GetProperty("periods");
+                IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            #endregion
+
             if (!ModelState.IsValid)
             {
                 form.Planets = GetPlanets();
                 return View(form);
             }
+            #region Date & Wind checks   
+            IEnumerable<Period> selectedDates = periodsResult.Where(x => x.StartTime.Date == form.dateA);
 
-            Booking b = new Booking()
+            string cleanWindSpeed1 = new string(selectedDates.ElementAt(0).WindSpeed.Where(Char.IsDigit).ToArray());
+            if (cleanWindSpeed1.Length > 1)
+                {
+                    cleanWindSpeed1 = cleanWindSpeed1.Substring(1);
+                }
+            int intWindSpeed1 = Int32.Parse(cleanWindSpeed1);
+
+            string cleanWindSpeed2 = new string(selectedDates.ElementAt(1).WindSpeed.Where(Char.IsDigit).ToArray());
+
+            if (cleanWindSpeed2.Length > 1)
             {
-                clientId = _sessionManager.Client.Id,
-                planet = form.planet,
-                stopover = form.stopover,
-                planet_portId = 15,
-                dateA = form.dateA,
-                dateB = form.dateB,
-                is_1stclass = form.is_1stclass,
-                price = 100
-            };
+                cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
+            }
+            int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
+            #endregion
 
-            _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+            if (intWindSpeed1 < 7 && intWindSpeed2 < 7)
+                {
+                    Booking b = new Booking()
+                    {
+                        clientId = _sessionManager.Client.Id,
+                        planet = form.planet,
+                        stopover = form.stopover,
+                        planet_portId = 15,
+                        dateA = form.dateA,
+                        dateB = form.dateB,
+                        is_1stclass = form.is_1stclass,
+                        price = 100
+                    };
 
-            _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
+                    _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+
+                    _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
+                    //break;
+
+                } else
+                {
+                    string invalidDate = "invalid";
+                    ViewBag.Name = invalidDate;
+                    return View(form);
+                }
 
             return RedirectToAction("Logged", "Auth");
         }
@@ -128,9 +173,10 @@ namespace SR_MVC.Controllers
             
         }
 
-        #region API
+
         public IActionResult Weather()
         {
+            #region Weather API Call
             //"https://api.weather.gov/gridpoints/LWX/81,50/forecast"
             using (HttpClient client = new HttpClient())
             {
@@ -148,9 +194,10 @@ namespace SR_MVC.Controllers
                 IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
                 return View(periodsResult);
-            } 
+            }
+            #endregion
         }
-        #endregion
+
 
     }
 }
