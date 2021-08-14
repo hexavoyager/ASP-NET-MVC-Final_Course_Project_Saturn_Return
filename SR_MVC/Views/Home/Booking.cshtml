@@ -9,50 +9,56 @@
     ViewData["Title"] = "Booking";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Your interplanetary journey starts here.</h1>
-</div>
+<div class="flex-container">
+    <div id="flex-item1">
+        <h1 class="display-4">Your interplanetary journey starts here.</h1>
+    </div>
+    <div id="flex-item2">
+        <div class="row">
+            <div>
+                <form asp-action="Booking" method="post">
 
-<div class="row">
-    <div>
-        <form asp-action="Booking" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="atmosphere" class="atmosphere">
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div id="atmosphere" class="atmosphere">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="planet" class="control-label"></label>
+                        <select asp-for="planet" asp-items="Model.Planets" class="form-control" onchange="displayStopover(this)">
+                            <option value="0">Choose a destination planet</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="stopover" style="display: none">
+                        <p>When travelling towards Saturn, you have the option to stop by Jupiter.</p>
+                        <div id="infoJupiter" class="atmosphere">
 
+                        </div>
+                        <label asp-for="stopover" class="control-label"></label>
+                        <input id="stopoverInput" asp-for="stopover" type="checkbox" name="Stopover" onclick="onStopoverChange()" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dateA" class="control-label"></label>
+                        <input asp-for="dateA" type="date" name="dateA" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dateB" class="control-label"></label>
+                        <input asp-for="dateB" type="date" name="dateA" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="is_1stclass" class="control-label"></label>
+                        <input asp-for="is_1stclass" type="checkbox" name="1st Class" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">BOOK</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="planet" class="control-label"></label>
-                <select asp-for="planet" asp-items="Model.Planets" class="form-control" onchange="displayStopover(this)">
-                    <option value="0">Choose a destination planet</option>
-                </select>
-            </div>
-            <div class="form-group" id="stopover" style="display: none">
-                <p>When travelling towards Saturn, you have the option to stop by Jupiter.</p>
-                <div id="infoJupiter" class="atmosphere">
-
-                </div>
-                <label asp-for="stopover" class="control-label"></label>
-                <input id="stopoverInput" asp-for="stopover" type="checkbox" name="Stopover" onclick="onStopoverChange()" />
-            </div>
-            <div class="form-group">
-                <label asp-for="dateA" class="control-label"></label>
-                <input asp-for="dateA" type="date" name="dateA" />
-            </div>
-            <div class="form-group">
-                <label asp-for="dateB" class="control-label"></label>
-                <input asp-for="dateB" type="date" name="dateA" />
-            </div>
-            <div class="form-group">
-                <label asp-for="is_1stclass" class="control-label"></label>
-                <input asp-for="is_1stclass" type="checkbox" name="1st Class" />
-            </div>
-            <div class="form-group">
-                <button type="submit">BOOK</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
