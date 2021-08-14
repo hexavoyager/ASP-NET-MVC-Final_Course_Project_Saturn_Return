@@ -10,8 +10,8 @@
 
 <div class="flex-container">
     <div id="flex-item1">
-    <h2>Launch Site Weather</h2>
-    <h5>Our spaceships launch from Cape Canaveral, Florida, US. Keep an eye on weather conditions to learn about last-minute cancellations due to winds stronger than 7mph.</h5></div>
+    <h2>Launch Site Weather</h2><br />
+    <h5>Our spaceships launch from the spaceport at Cape Canaveral, Florida, US. Keep an eye on weather conditions to learn about last-minute cancellations due to winds stronger than 7mph.</h5></div>
     <div id="flex-item2">
         <table class="table">
             <thead>
@@ -34,20 +34,19 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach (var item in Model)
                 {
                     string cleanWindSpeed = new string(item.WindSpeed.Where(Char.IsDigit).ToArray());
                     if (cleanWindSpeed.Length > 1)
                     {
-                        //cleanWindSpeed = cleanWindSpeed.Remove(cleanWindSpeed.Length - 0, 1);
                         cleanWindSpeed = cleanWindSpeed.Substring(1);
-
                     }
                     int intWindSpeed = Int32.Parse(cleanWindSpeed);
 
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.StartTime.Date)
+                        @Html.DisplayFor(modelItem => item.StartTime)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Temperature)
@@ -57,7 +56,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.WindSpeed)
                             <p>
-                                <strong>Warning!</strong> No interstellar flights possible with winds exceeding 7mph.
+                                <strong>Warning!</strong> No interstellar launches possible with winds exceeding 7mph.
                             </p>
                         </td>
                     }

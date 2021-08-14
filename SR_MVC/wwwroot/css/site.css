@@ -1,8 +1,23 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
+﻿
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.nav-item {
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #04033F;
+    padding: 0px 15px 0px 15px;
+    transition: font-weight 150ms, transform 300ms, border-bottom 1s;
+}
+
+    .nav-item:hover {
+        font-weight: 300;
+        transform: translate(0px, -20px);
+        border-bottom: 3px solid rgba(0, 0, 255, 0.14);
+    }
+
 
 #alertWind {
    font-weight: 700;
@@ -11,10 +26,6 @@ for details on configuring this project to bundle and minify static web assets. 
 .flex-container {
     display: flex;
     flex-direction: row;
-/*    flex-flow: row wrap;
-    justify-content: space-between;
-    align-content: space-between;
-    align-items: center;*/
 }
 
 #flex-item1 {
@@ -45,7 +56,6 @@ for details on configuring this project to bundle and minify static web assets. 
     animation: pulse-animation 0.5s infinite;
 }
 
-
 @keyframes pulse-animation {
     0% {
         box-shadow: 0 0 0 0px #D14A14;
@@ -73,11 +83,14 @@ body {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     color: white;
     font-family: 'Georama', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 menu{
-    align-items: stretch;
+    align-items: flex-start;
 }
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -85,7 +98,7 @@ a.navbar-brand {
 }
 
 .nav{
-    margin: 10px;
+    margin: 20px;
     padding: 40px;
 }
 
@@ -162,8 +175,8 @@ body {
 
 #name {
     position: inherit;
-    width: 300px;
-    margin: 10px;
+    min-width: 350px;
+    padding: 0px, 30px, 0px, 30px;
     color: #04033F;
 }
 
@@ -400,3 +413,4 @@ button, .mainbtn, button::after {
 }
 
 /*button magic end*/
+
