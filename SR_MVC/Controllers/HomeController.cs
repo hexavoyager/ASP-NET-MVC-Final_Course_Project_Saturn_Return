@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SR_MVC.Controllers
@@ -127,24 +129,26 @@ namespace SR_MVC.Controllers
         }
 
         #region API
-        public async Task<IActionResult> Weather()
+        public IActionResult Weather()
         {
-            Properties p = new Properties();
-            string url = "https://api.weather.gov/points/28,-80";
-            using (var httpClient = new HttpClient())
+            //"https://api.weather.gov/gridpoints/LWX/81,50/forecast"
+            using (HttpClient client = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
-                using (var response = await httpClient.GetAsync(url))
-                {
-                    
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    
-                    
-                    p = JsonConvert.DeserializeObject<Properties>(apiResponse);
-                }
-            }
+                client.BaseAddress = new Uri("https://api.weather.gov/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
+                HttpResponseMessage httpResponseMessage = client.GetAsync("gridpoints/LWX/81,50/forecast").Result;
+                httpResponseMessage.EnsureSuccessStatusCode();
+                string json = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                JsonDocument jsonDocument = JsonDocument.Parse(json);
+                JsonElement rootElement = jsonDocument.RootElement;
+                JsonElement properties = rootElement.GetProperty("properties");
+                JsonElement periods = properties.GetProperty("periods");
+                IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-            return View(p);
+                return View(periodsResult);
+            } 
         }
         #endregion
 

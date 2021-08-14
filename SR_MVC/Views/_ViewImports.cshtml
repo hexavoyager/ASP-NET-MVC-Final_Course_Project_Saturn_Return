@@ -2,10 +2,12 @@
 @using SR_MVC.Models
 @using SR_MVC.Models.Forms
 @using SR_BLL.Repos
-@using SR_MVC.Infrastructure.Session  
+@using SR_MVC.Infrastructure.Session
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @inject ISessionManager sessionManager
 @inject IPlanetRepo planetRepo
 @inject IClientRepo clientRepo
-@inject IBookingRepo bookingRepo   
+@inject IBookingRepo bookingRepo
+
