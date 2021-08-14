@@ -74,26 +74,36 @@ namespace SR_MVC.Controllers
                 form.Planets = GetPlanets();
                 return View(form);
             }
-            #region Date & Wind checks   
+            #region Date & Wind checks
+            
             IEnumerable<Period> selectedDates = periodsResult.Where(x => x.StartTime.Date == form.dateA);
 
-            string cleanWindSpeed1 = new string(selectedDates.ElementAt(0).WindSpeed.Where(Char.IsDigit).ToArray());
+            Period date1 = selectedDates.ElementAt(0);
+
+            Period date2 = selectedDates.ElementAt(1) ?? date1;
+
+            DateTime today = DateTime.Now;
+
+            string cleanWindSpeed1 = new string(date1.WindSpeed.Where(Char.IsDigit).ToArray());
+
             if (cleanWindSpeed1.Length > 1)
                 {
                     cleanWindSpeed1 = cleanWindSpeed1.Substring(1);
                 }
             int intWindSpeed1 = Int32.Parse(cleanWindSpeed1);
 
-            string cleanWindSpeed2 = new string(selectedDates.ElementAt(1).WindSpeed.Where(Char.IsDigit).ToArray());
+            string cleanWindSpeed2 = new string(date2.WindSpeed.Where(Char.IsDigit).ToArray());
 
-            if (cleanWindSpeed2.Length > 1)
-            {
-                cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
-            }
-            int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
+                if (cleanWindSpeed2.Length > 1)
+                {
+                    cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
+                }
+                int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
+
+          
             #endregion
 
-            if (intWindSpeed1 < 7 && intWindSpeed2 < 7)
+            if (intWindSpeed1 < 7 && intWindSpeed2 < 7 )
                 {
                     Booking b = new Booking()
                     {
@@ -112,12 +122,19 @@ namespace SR_MVC.Controllers
                     _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
                     //break;
 
-                } else
+                } else if (date1.StartTime == today | date2.StartTime == today )
+
                 {
-                    string invalidDate = "invalid";
-                    ViewBag.Name = invalidDate;
+                    string weatherProb = "invalid";
+                    ViewBag.Name = weatherProb;
                     return View(form);
-                }
+
+                } else
+            {
+                string todayProb = "invalid";
+                ViewBag.Name = todayProb;
+                return View(form);
+            }
 
             return RedirectToAction("Logged", "Auth");
         }
