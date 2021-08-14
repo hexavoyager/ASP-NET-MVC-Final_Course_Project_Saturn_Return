@@ -77,10 +77,9 @@ namespace SR_MVC.Controllers
             #region Date & Wind checks
             
             IEnumerable<Period> selectedDates = periodsResult.Where(x => x.StartTime.Date == form.dateA);
-
+            int datesCount = selectedDates.Count();
             Period date1 = selectedDates.ElementAt(0);
-
-            Period date2 = selectedDates.ElementAt(1) ?? date1;
+            Period date2 = datesCount > 1 ? selectedDates.ElementAt(1) : date1;
 
             DateTime today = DateTime.Now;
 
