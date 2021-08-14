@@ -99,8 +99,9 @@ namespace SR_MVC.Controllers
                 }
                 int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
 
-          
+
             #endregion
+            ViewBag.Alert = "";
 
             if (intWindSpeed1 < 7 && intWindSpeed2 < 7 )
                 {
@@ -124,14 +125,12 @@ namespace SR_MVC.Controllers
                 } else if (date1.StartTime == today | date2.StartTime == today )
 
                 {
-                    string weatherProb = "invalid";
-                    ViewBag.Name = weatherProb;
+                    ViewBag.Alert = "todayErr";
                     return View(form);
 
                 } else
             {
-                string todayProb = "invalid";
-                ViewBag.Name = todayProb;
+                ViewBag.Alert = "weatherErr";
                 return View(form);
             }
 

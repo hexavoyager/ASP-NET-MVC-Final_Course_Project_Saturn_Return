@@ -7,18 +7,31 @@
 
 @{
     ViewData["Title"] = "Booking";
-    var weatherProb = ViewBag.Name;
-    var todayProb = ViewBag.Name;
+    var alert = ViewBag.Alert;
 }
 
+@if (sessionManager.Client.Is_healthy != true)
+{
+    <div class="flex-container">
+    <div id="flex-item1"><h1>We have bad news for you :(</h1></div>
+    <div id="flex-item2">
+        <h2>Warning!</h2>
+        <p>Health authorities have flagged you as a non-suitable candidate for atmospheres different than Earth's.</p>
+    </div>  
+        </div>
+}
+else
+{
 <div class="flex-container">
     <div id="flex-item1">
         <h1 class="display-4">Your interplanetary journey starts here.</h1>
-        @if (weatherProb == "invalid")
+
+        @if (alert == "weatherErr")
         {
             <br />
             <p>Seems like this isn't a suitable date for a launch. Winds are equal or stronger to 7mph on our launch site at Cape Canaveral. Please pick another date.</p>}
-        @if (todayProb == "invalid")
+
+        @if (alert == "todayErr")
         {
             <br />
         <p>You can't book a launch for the same day.</p>}
@@ -66,7 +79,7 @@
         </div>
     </div>
 </div>
-
+}
 
 
 
