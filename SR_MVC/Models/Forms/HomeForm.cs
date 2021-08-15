@@ -18,7 +18,7 @@ namespace SR_MVC.Models.Forms
         {
             dateA = DateTime.Now.Date;
             TimeSpan time = new TimeSpan(1, 0, 0, 0);
-            dateB = DateTime.Now.Date + time;
+            dateB = dateA + time;
         }
 
         [Required(ErrorMessage = "You must select a destination planet.")]

@@ -135,10 +135,10 @@ namespace SR_MVC.Controllers
                             price = 100
                         };
 
-                        _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+                        _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateB, b.is_1stclass, b.price);
 
                         _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
-                        //break;
+                        break;
 
                     }
                     else if (date1.StartTime == today | date2.StartTime == today)
