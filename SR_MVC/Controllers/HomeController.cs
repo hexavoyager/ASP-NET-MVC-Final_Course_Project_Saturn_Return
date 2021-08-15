@@ -75,35 +75,81 @@ namespace SR_MVC.Controllers
                 return View(form);
             }
             #region Date & Wind checks
-            
-            IEnumerable<Period> selectedDates = periodsResult.Where(x => x.StartTime.Date == form.dateA);
-            int datesCount = selectedDates.Count();
-            Period date1 = selectedDates.ElementAt(0);
-            Period date2 = datesCount > 1 ? selectedDates.ElementAt(1) : date1;
+            IEnumerable<Period> selectedDates;
+            DateTime pickedDate = form.dateA.Date;
+            string[] stringWeatherDates = periodsResult.Select(p => p.StartTime.ToString("MM/dd/yyyy")).ToArray();
 
-            DateTime today = DateTime.Now;
+            foreach (Period p in periodsResult)
+            {
+                string weatherDateString = p.StartTime.Date.ToString("MM/dd/yyyy");
+                string pickedDateString = pickedDate.ToString("MM/dd/yyyy");
+                bool dateInRange = stringWeatherDates.Contains(pickedDateString);
 
-            string cleanWindSpeed1 = new string(date1.WindSpeed.Where(Char.IsDigit).ToArray());
-
-            if (cleanWindSpeed1.Length > 1)
+                if (dateInRange)
                 {
-                    cleanWindSpeed1 = cleanWindSpeed1.Substring(1);
-                }
-            int intWindSpeed1 = Int32.Parse(cleanWindSpeed1);
+                    selectedDates = periodsResult.Where(x =>
+            x.StartTime.Date == pickedDate);
 
-            string cleanWindSpeed2 = new string(date2.WindSpeed.Where(Char.IsDigit).ToArray());
+                    int datesCount = selectedDates.Count();
+                    Period date1 = selectedDates.ElementAt(0);
+                    Period date2 = datesCount > 1 ? selectedDates.ElementAt(1) : date1;
 
-                if (cleanWindSpeed2.Length > 1)
-                {
-                    cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
-                }
-                int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
+                    DateTime today = DateTime.Now;
+
+                    string cleanWindSpeed1 = new string(date1.WindSpeed.Where(Char.IsDigit).ToArray());
+
+                    if (cleanWindSpeed1.Length > 1)
+                    {
+                        cleanWindSpeed1 = cleanWindSpeed1.Substring(1);
+                    }
+                    int intWindSpeed1 = Int32.Parse(cleanWindSpeed1);
+
+                    string cleanWindSpeed2 = new string(date2.WindSpeed.Where(Char.IsDigit).ToArray());
+
+                    if (cleanWindSpeed2.Length > 1)
+                    {
+                        cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
+                    }
+                    int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
 
 
-            #endregion
-            ViewBag.Alert = "";
+                    #endregion
+                    ViewBag.Alert = "";
 
-            if (intWindSpeed1 < 7 && intWindSpeed2 < 7 )
+                    if (intWindSpeed1 < 7 && intWindSpeed2 < 7)
+                    {
+                        Booking b = new Booking()
+                        {
+                            clientId = _sessionManager.Client.Id,
+                            planet = form.planet,
+                            stopover = form.stopover,
+                            planet_portId = 15,
+                            dateA = form.dateA,
+                            dateB = form.dateB,
+                            is_1stclass = form.is_1stclass,
+                            price = 100
+                        };
+
+                        _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
+
+                        _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
+                        //break;
+
+                    }
+                    else if (date1.StartTime == today | date2.StartTime == today)
+
+                    {
+                        ViewBag.Alert = "todayErr";
+                        return View(form);
+
+                    }
+                    else
+                    {
+                        ViewBag.Alert = "weatherErr";
+                        return View(form);
+                    }
+
+                } else
                 {
                     Booking b = new Booking()
                     {
@@ -120,18 +166,10 @@ namespace SR_MVC.Controllers
                     _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
 
                     _clientRepo.UpdateCount(_sessionManager.Client.Id, _sessionManager.Client.Book_count + 1);
-                    //break;
 
-                } else if (date1.StartTime == today | date2.StartTime == today )
-
-                {
-                    ViewBag.Alert = "todayErr";
-                    return View(form);
-
-                } else
-            {
-                ViewBag.Alert = "weatherErr";
-                return View(form);
+                    break;
+                }
+                
             }
 
             return RedirectToAction("Logged", "Auth");
