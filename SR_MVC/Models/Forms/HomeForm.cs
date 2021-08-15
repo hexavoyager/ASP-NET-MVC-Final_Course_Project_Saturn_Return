@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SR_BLL.Data;
 using SR_MVC.Infrastructure.Validation;
 using System;
@@ -13,13 +14,12 @@ namespace SR_MVC.Models.Forms
     public class HomeForm
 
     {
-
         public HomeForm()
         {
             dateA = DateTime.Now.Date;
-            dateB = DateTime.Now.Date;
+            dateB = dateA;
         }
-        
+
         [Required(ErrorMessage = "You must select a destination planet.")]
         [DisplayName("Destination planet:")]
         public int planet { get; set; }

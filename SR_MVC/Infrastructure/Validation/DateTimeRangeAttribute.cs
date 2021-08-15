@@ -18,17 +18,26 @@ namespace SR_MVC.Infrastructure.Validation
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+
+            int Count = value.ToString().Count();
+
             if (value is not DateTime)
-                return new ValidationResult($"the value of the property '{validationContext.MemberName}' must be a Date");
+                return new ValidationResult("Not a valid date. Choose a different one.");
 
             if (!IsValid((DateTime)value))
-                return new ValidationResult($"the value of the property '{validationContext.MemberName}' is'nt in Range");
+                return new ValidationResult("Not a valid date. Choose a different one.");
+
+            if(value.ToString().Count() != 19)
+                return new ValidationResult("Not a valid date. Choose a different one.");
 
             return ValidationResult.Success;
         }
         private bool IsValid(DateTime value)
         {
+            value = value.Date;
             return value >= _startDate;
         }
+
+        
     }
 }
