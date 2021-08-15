@@ -1,13 +1,25 @@
 ﻿
+@model SR_MVC.Infrastructure.Session.SessionManager
+
+@{
+    ViewData["Title"] = "Logged";
+    int bookings = @sessionManager.Client.Book_count;
+
+}
+
 <div class="flex-container">
-    <div id="flex-item1"><h2>
-    Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName!
-</h2></div>
+    <div id="flex-item1">
+        <h2>
+            Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName!
+        </h2>
+    </div>
     <div id="flex-item2">
         @if (sessionManager.Client != null)
         {
             <div class="container">
-                <p>Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
+                <p>
+                    Your Client ID is @sessionManager.Client.Id and you have booked @bookings @(bookings == 1 ? "trip" : "trips") with us so far!
+                </p>
             </div>
 
             <a class="mainbtn" href="/Home/Booking">Book a spaceflight!</a>
@@ -17,7 +29,7 @@
                 <div class="warning">
                     <h2>Warning!</h2>
                     <p>Health authorities have flagged you as a non-suitable candidate for atmospheres different than Earth's.
-</div>
+                </div>
             };
         }
     </div>

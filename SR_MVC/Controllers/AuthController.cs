@@ -90,5 +90,11 @@ namespace SR_MVC.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Logged(Client c)
+        {
+            return View(c.book_count);
+        }
     }
 }
