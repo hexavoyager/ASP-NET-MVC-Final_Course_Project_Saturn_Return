@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#region USING
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -17,12 +18,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
-
+#endregion
 
 namespace SR_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        #region Local tools
         private readonly ILogger<HomeController> _logger;
         private readonly IPlanetRepo _planetRepo;
         private readonly IBookingRepo _bookingRepo;
@@ -37,7 +39,7 @@ namespace SR_MVC.Controllers
             _clientRepo = clientRepo;
             _sessionManager = sessionManager;
         }
-
+        #endregion
         public IActionResult Booking()
         {
             if (_sessionManager.Client != null)
@@ -74,6 +76,7 @@ namespace SR_MVC.Controllers
                 form.Planets = GetPlanets();
                 return View(form);
             }
+
             #region Date & Wind checks
             IEnumerable<Period> selectedDates;
             DateTime pickedDate = form.dateA.Date;
