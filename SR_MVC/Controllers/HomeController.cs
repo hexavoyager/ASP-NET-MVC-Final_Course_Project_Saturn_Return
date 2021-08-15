@@ -77,6 +77,8 @@ namespace SR_MVC.Controllers
                 return View(form);
             }
 
+            form.Planets = GetPlanets();
+
             #region Date & Wind checks
             IEnumerable<Period> selectedDates;
             DateTime pickedDate = form.dateA.Date;
@@ -221,6 +223,7 @@ namespace SR_MVC.Controllers
             return View(Planets.Select(p => new DisplayPlanet()
             {
                 Name = p.name,
+                Capacity = p.capacity,
                 Atmosphere = p.atmosphere,
                 Distance_m = p.distance_m,
                 Distance_h = p.distance_h,

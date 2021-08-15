@@ -17,7 +17,8 @@ namespace SR_MVC.Models.Forms
         public HomeForm()
         {
             dateA = DateTime.Now.Date;
-            dateB = dateA;
+            TimeSpan time = new TimeSpan(1, 0, 0, 0);
+            dateB = DateTime.Now.Date + time;
         }
 
         [Required(ErrorMessage = "You must select a destination planet.")]
@@ -28,14 +29,16 @@ namespace SR_MVC.Models.Forms
         public bool stopover { get; set; }
 
         [Required(ErrorMessage = "You must select a departure date.")]
+        [DataType(DataType.Date)]
         [DisplayName("Departure date:")]
         [DateTimeRange]
         public DateTime dateA { get; set; }
 
         [Required(ErrorMessage = "You must select a return date.")]
+        [DataType(DataType.Date)]
         [DisplayName("Return date:")]
         [DateTimeRange]
-        public DateTime dateB { get; set; }
+        public DateTime dateB { get; set; }  
 
         [DisplayName("1st class option:")]
         public bool is_1stclass { get; set; }
