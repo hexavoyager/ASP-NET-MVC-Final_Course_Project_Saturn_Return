@@ -34,7 +34,6 @@ namespace SR_MVC.Infrastructure.Validation
             value = value.Date;
             return value >= _today;
         }
-
-        
+ 
     }
 }
