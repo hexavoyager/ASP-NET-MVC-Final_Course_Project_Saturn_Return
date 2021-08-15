@@ -88,13 +88,19 @@ namespace SR_MVC.Controllers
 
         public IActionResult Logged()
         {
+            Client CurrentClient = _clientRepo.Get(_sessionManager.Client.Id);
+            string bookCountString = CurrentClient.book_count.ToString();
+            ViewBag.bookCount = bookCountString;
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Logged(Client c)
-        {
-            return View(c.book_count);
-        }
+        //[HttpPost]
+        //public IActionResult Logged(int id)
+        //{
+        //    Client CurrentClient = _clientRepo.Get(_sessionManager.Client.Id);
+        //    string bookCountString = CurrentClient.book_count.ToString();
+        //    ViewBag.bookCount = bookCountString;
+        //    return View(bookCountString);
+        //}
     }
 }

@@ -20,25 +20,23 @@ namespace SR_MVC.Models.Forms
             dateB = DateTime.Now.Date;
         }
         
-        [Required]
+        [Required(ErrorMessage = "You must select a destination planet.")]
         [DisplayName("Destination planet:")]
         public int planet { get; set; }
 
-        [Required]
         [DisplayName("Jupiter stop-over:")]
         public bool stopover { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You must select a departure date.")]
         [DisplayName("Departure date:")]
         [DateTimeRange]
         public DateTime dateA { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You must select a return date.")]
         [DisplayName("Return date:")]
         [DateTimeRange]
         public DateTime dateB { get; set; }
 
-        [Required]
         [DisplayName("1st class option:")]
         public bool is_1stclass { get; set; }
         public IEnumerable<SelectListItem> Planets { get; set; }

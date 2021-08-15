@@ -3,8 +3,8 @@
 
 @{
     ViewData["Title"] = "Logged";
-    int bookings = @sessionManager.Client.Book_count;
-
+    string bookings = @sessionManager.Client.Book_count.ToString();
+    string bookCountString = ViewBag.bookCount;
 }
 
 <div class="flex-container">
@@ -14,11 +14,12 @@
         </h2>
     </div>
     <div id="flex-item2">
+        @*@bookCountString = bookings;*@
         @if (sessionManager.Client != null)
         {
             <div class="container">
                 <p>
-                    Your Client ID is @sessionManager.Client.Id and you have booked @bookings @(bookings == 1 ? "trip" : "trips") with us so far!
+                    Your Client ID is @sessionManager.Client.Id and you have booked @bookCountString @(bookCountString == "1" ? "trip" : "trips") with us so far!
                 </p>
             </div>
 
