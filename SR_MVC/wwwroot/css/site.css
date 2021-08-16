@@ -59,7 +59,9 @@ input[type=text]:hover, input[type=password]:hover, input[type=date]:hover, inpu
 }
 
 #flex-item1 {
-    flex-basis: 500px;
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 3;
     padding: 30px;
     transition: background-color, 300ms;
 }
@@ -67,7 +69,9 @@ input[type=text]:hover, input[type=password]:hover, input[type=date]:hover, inpu
 #flex-item2 {
     border-left: 2px solid rgba(255, 255, 255, 0.18);
     padding: 30px;
-    flex-basis: 1000px;
+    flex-basis: 500px;
+    flex-grow: 4;
+    flex-shrink: 1;
     transition: background-color, 300ms;
 }
 

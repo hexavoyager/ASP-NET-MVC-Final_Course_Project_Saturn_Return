@@ -103,12 +103,12 @@
         @if (sessionManager.Client != null)
         {
             <div class="container">
-                <p>Welcome, @sessionManager.Client.FirstName @sessionManager.Client.LastName! Your Client ID is @sessionManager.Client.Id and you have booked @sessionManager.Client.Book_count trips with us so far.</p>
+                <h6 style="color: antiquewhite;">You are now logged in as @sessionManager.Client.FirstName @sessionManager.Client.LastName! </h6>
             </div>
         }
         else
         { <div class="container">
-                Welcome! Login to book an interstellar flight.
+              <h6 style="color: antiquewhite;">Welcome! Login to access the booking system.</h6>
             </div>}
 
     </footer>
