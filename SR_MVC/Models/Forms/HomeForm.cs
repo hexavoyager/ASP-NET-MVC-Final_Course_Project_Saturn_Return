@@ -37,6 +37,7 @@ namespace SR_MVC.Models.Forms
         [Required(ErrorMessage = "You must select a return date.")]
         [DataType(DataType.Date)]
         [DisplayName("Return date:")]
+        [ReturnDate("dateA")]
         [DateTimeRange]
         public DateTime dateB { get; set; }  
 

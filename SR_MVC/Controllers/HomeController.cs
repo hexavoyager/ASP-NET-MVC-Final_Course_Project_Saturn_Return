@@ -55,29 +55,36 @@ namespace SR_MVC.Controllers
         [HttpPost]
         public IActionResult Booking(HomeForm form)
         {
-            #region Weather API Call
-            HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("https://api.weather.gov/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
-                HttpResponseMessage httpResponseMessage = client.GetAsync("gridpoints/LWX/81,50/forecast").Result;
-                httpResponseMessage.EnsureSuccessStatusCode();
-                string json = httpResponseMessage.Content.ReadAsStringAsync().Result;
-                JsonDocument jsonDocument = JsonDocument.Parse(json);
-                JsonElement rootElement = jsonDocument.RootElement;
-                JsonElement properties = rootElement.GetProperty("properties");
-                JsonElement periods = properties.GetProperty("periods");
-                IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            #endregion
+            form.Planets = GetPlanets();
 
-            if (!ModelState.IsValid)
+            if (form.planet == 0)
             {
-                form.Planets = GetPlanets();
+                ModelState.AddModelError("planet", "You must select a valid planet.");
                 return View(form);
             }
 
-            form.Planets = GetPlanets();
+            if (!ModelState.IsValid)
+            {
+                return View(form);
+            }
+
+            #region Weather API Call
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://api.weather.gov/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Add("User-Agent", "ForecastAPI");
+            HttpResponseMessage httpResponseMessage = client.GetAsync("gridpoints/LWX/81,50/forecast").Result;
+            httpResponseMessage.EnsureSuccessStatusCode();
+            string json = httpResponseMessage.Content.ReadAsStringAsync().Result;
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            JsonElement rootElement = jsonDocument.RootElement;
+            JsonElement properties = rootElement.GetProperty("properties");
+            JsonElement periods = properties.GetProperty("periods");
+            IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            #endregion
+
+            
 
             #region Date & Wind checks
             IEnumerable<Period> selectedDates;
@@ -166,6 +173,7 @@ namespace SR_MVC.Controllers
                         dateB = form.dateB,
                         is_1stclass = form.is_1stclass,
                         price = 100
+
                     };
 
                     _bookingRepo.Create(b.clientId, b.planet, b.stopover, b.planet_portId, b.dateA, b.dateA, b.is_1stclass, b.price);
