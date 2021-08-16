@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+
+.navbar-toggler{
+    width: 40px;
+    height: 40px;
+    animation: none;
+}
 #validationMessage {
     animation: blinking 1s infinite;
 }
@@ -31,23 +37,70 @@ input[type=text]:hover, input[type=password]:hover, input[type=date]:hover, inpu
         border: 2px solid yellowgreen;
     }
 
+/*NAVBAR*/
+
+.ul{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-right: 200px;
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+.navbar-brand {
+    display: flex;
+    flex-basis: 300px;
+    color: white;
+    font-size: large;
+
+}
+
+a.nav-link {
+    display: flex;
+    color: aliceblue;
+    text-align: center;
+}
 
 .nav-item {
-    flex-grow: 1;
+    display: flex;
+    flex-grow: 4;
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #04033F;
     padding: 0px 15px 0px 15px;
     transition: font-weight 150ms, transform 300ms, border-bottom 1s;
+    align-content: center;
+    text-align: center;
 }
 
-    .nav-item:hover {
-        font-weight: 300;
-        transform: translate(0px, -20px);
-        border-bottom: 3px solid rgba(0, 0, 255, 0.14);
-    }
+.nav-item:hover {
+    font-weight: 300;
+    transform: translate(0px, -20px);
+    border-bottom: 3px solid rgba(0, 0, 255, 0.14);
+}
 
+a.navbar-brand {
+    display: flex;
+    flex-grow: 3;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.nav {
+    display: flex;
+    margin: 20px;
+    padding: 40px;
+}
+
+/*END NAVBAR*/
 
 #alertWind {
    font-weight: 700;
@@ -121,20 +174,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-menu{
-    align-items: flex-start;
-}
 
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-}
-
-.nav{
-    margin: 20px;
-    padding: 40px;
-}
 
 /* Provide sufficient contrast against white background */
 a:link {
@@ -150,6 +190,7 @@ a:link {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
 
+    display: flex;
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
@@ -161,16 +202,36 @@ html {
   font-size: 14px;
 }
 
+
+@media (max-width: 1200px) {
+
+/*.nav{
+
+    width: 500px;
+}
+*/
+}
+
 @media (max-width: 768px) {
 
-.flex-container {
-     display: flex;
-     flex-direction: column;
+    .flex-container {
+        display: flex;
+        flex-direction: column;
     }
 
-html {
-    font-size: 16px;
-  }
+  /*  html {
+        font-size: 16px;
+    }*/
+
+    #logo {
+        position: inherit;
+        width: 130px;
+        margin: 5px;
+    }
+
+    .table{
+        max-width: 250px;
+    }
 }
 
 .border-top {
@@ -216,15 +277,16 @@ body {
 
 #name {
     position: inherit;
-    min-width: 350px;
-    padding: 0px, 30px, 0px, 30px;
+    min-width: 150px;
+    margin-right: 40px;
+    margin-left: 15px;
     color: #04033F;
 }
 
 #logo {
     position: inherit;
     width: 230px;
-    margin: 5px;
+    margin-right: 15px;
 }
 
 /*STARS*/

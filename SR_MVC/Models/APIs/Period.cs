@@ -11,21 +11,21 @@ namespace SR_MVC.Models.APIs
     {
         public int Number { get; set; }
 
-        [DisplayName("Time:")]
+        [DisplayName("Day")]
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool IsDaytime { get; set; }
 
-        [DisplayName("Temperature:")]
+        [DisplayName(" Temp °F")]
         public int Temperature { get; set; }
 
-        [DisplayName("Wind speed:")]
+        [DisplayName("Wind Mph ")]
         public string WindSpeed { get; set; }
 
-        [DisplayName("Wind direction:")]
+        [DisplayName("Wind")]
         public string WindDirection { get; set; }
 
-        [DisplayName("Forecast:")]
+        [DisplayName("Details")]
         public string ShortForecast { get; set; }
     }
 
