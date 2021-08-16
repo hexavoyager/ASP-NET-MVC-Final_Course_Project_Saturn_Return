@@ -353,7 +353,8 @@ button .accept-policy {
 
 #logo {
     display: flex;
-    margin-right: 15px;
+    margin-left: 200px;
+    margin-right: 30px;
     padding-right: 30px;
 }
 
@@ -362,7 +363,7 @@ button .accept-policy {
 .night {
     display: flex;
     position: relative;
-    width: 300px;
+/*    width: 300px;*/
     transform: rotateZ(40deg);
 }
 
@@ -377,71 +378,71 @@ button .accept-policy {
     animation: tail 3s ease-in-out infinite, falling 3s ease-in-out infinite;
 }
 
-.star::before, .star::after {
-    content: '';
-    position: absolute;
-    top: calc(50% - 2px);
-    right: 0;
-    height: 4px;
-    background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #FFF1A7, rgba(0, 0, 255, 0));
-    border-radius: 100%;
-    transform: translateX(50%) rotateZ(45deg);
-    animation: shining 2s ease-in-out infinite;
-}
+    .star::before, .star::after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 2px);
+        right: 0;
+        height: 4px;
+        background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #FFF1A7, rgba(0, 0, 255, 0));
+        border-radius: 100%;
+        transform: translateX(50%) rotateZ(45deg);
+        animation: shining 2s ease-in-out infinite;
+    }
 
-.star::after {
-    transform: translateX(50%) rotateZ(-45deg);
-}
+    .star::after {
+        transform: translateX(50%) rotateZ(-45deg);
+    }
 
-.star:nth-child(1) {
-    top: calc(50% - 100px);
-    left: calc(50% - 250px);
-    animation-delay: 1s;
-}
-
-    .star:nth-child(1)::before, .star:nth-child(1)::after {
+    .star:nth-child(1) {
+        top: calc(50% - 100px);
+        left: calc(50% - 250px);
         animation-delay: 1s;
     }
 
-.star:nth-child(2) {
-    top: calc(50% - 50px);
-    left: calc(50% - 200px);
-    animation-delay: 1.2s;
-}
+        .star:nth-child(1)::before, .star:nth-child(1)::after {
+            animation-delay: 1s;
+        }
 
-    .star:nth-child(2)::before, .star:nth-child(2)::after {
+    .star:nth-child(2) {
+        top: calc(50% - 50px);
+        left: calc(50% - 200px);
         animation-delay: 1.2s;
     }
 
-.star:nth-child(3) {
-    top: calc(50% - 0px);
-    left: calc(50% - 150px);
-    animation-delay: 1.4s;
-}
+        .star:nth-child(2)::before, .star:nth-child(2)::after {
+            animation-delay: 1.2s;
+        }
 
-    .star:nth-child(3)::before, .star:nth-child(3)::after {
+    .star:nth-child(3) {
+        top: calc(50% - 0px);
+        left: calc(50% - 150px);
         animation-delay: 1.4s;
     }
 
-.star:nth-child(4) {
-    top: calc(50% - -50px);
-    left: calc(50% - 200px);
-    animation-delay: 1.6s;
-}
+        .star:nth-child(3)::before, .star:nth-child(3)::after {
+            animation-delay: 1.4s;
+        }
 
-    .star:nth-child(4)::before, .star:nth-child(4)::after {
+    .star:nth-child(4) {
+        top: calc(50% - -50px);
+        left: calc(50% - 200px);
         animation-delay: 1.6s;
     }
 
-.star:nth-child(5) {
-    top: calc(50% - -100px);
-    left: calc(50% - 250px);
-    animation-delay: 1.8s;
-}
+        .star:nth-child(4)::before, .star:nth-child(4)::after {
+            animation-delay: 1.6s;
+        }
 
-    .star:nth-child(5)::before, .star:nth-child(5)::after {
+    .star:nth-child(5) {
+        top: calc(50% - -100px);
+        left: calc(50% - 250px);
         animation-delay: 1.8s;
     }
+
+        .star:nth-child(5)::before, .star:nth-child(5)::after {
+            animation-delay: 1.8s;
+        }
 
 /* || Custom button*/
 
@@ -493,14 +494,19 @@ button, .mainbtn, button::after {
 
 @media (max-width: 900px) {
 
-    .flex-container {
+/*    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }*/
+
+        .flex-container {
         display: flex;
         flex-direction: column;
     }
 
     #logo {
-        padding-left: 40px;
-        width: 150px;
+        margin-left: 40px;
     }
 
     .namecontainer {
