@@ -10,8 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
---INSERT INTO [Clients] ([fname], [lname], [bdate], [email], [pass], [ccard], [idcard], [book_count], [is_vip], [is_healthy]) VALUES ('David', 'Bowman', 30/05/1970, 'db@gmail.com', 'pw', 'XXXX-XXXX-XXXX-XXXX', 'A9F41KV', DEFAULT, 1, 1);
---INSERT INTO [Clients] ([fname], [lname], [bdate], [email], [pass], [ccard], [idcard], [book_count], [is_vip], [is_healthy]) VALUES ('John', 'Doe', 02/07/1978, 'jd@gmail.com', 'pw', 'XXXX-XXXX-XXXX-XXXX', 'Y3GN98B', DEFAULT, DEFAULT, 1);
+--EXEC RegisterClient @fname = 'David', @lname = 'Bowman', @bdate = '1970/05/30', @email = 'db@gmail.com', @pass = 'pw', @ccard = 'XXXX-XXXX-XXXX-XXXX', @idcard = 'A9F41KV', @book_count = DEFAULT, @is_vip = 1, @is_healthy = 1;
+--EXEC RegisterClient @fname = 'John', @lname = 'Doe', @bdate = '1978/07/02', @email = 'jd@gmail.com', @pass = 'pw', @ccard = 'XXXX-XXXX-XXXX-XXXX', @idcard = 'Y3GN98B', @book_count = DEFAULT, @is_vip = 0, @is_healthy = 1;
 
 --INSERT INTO [Planets] (
 --    [name],

@@ -22,12 +22,12 @@ namespace SR_BLL.Data
         {
             this.Id = id;
         }
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string fname { get; set; }
         public string lname { get; set; }
         public DateTime bdate { get; set; }
         public string email { get; set; }
-        public string pass { get; set; }
+        public string pass { get; private set; }
         public string ccard { get; set; }
         public string idcard { get; set; }
         public int book_count { get; set; }

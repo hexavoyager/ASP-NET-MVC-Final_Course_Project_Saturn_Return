@@ -11,6 +11,6 @@
 	@is_healthy BIT = 1
 AS
 BEGIN
-	INSERT INTO [Clients] (fname, lname, bdate, email, pass, ccard, idcard, book_count, is_vip, is_healthy) VALUES (@fname, @lname, @bdate, @email, @pass, @ccard, @idcard, @book_count, @is_vip, @is_healthy)
+	INSERT INTO [Clients] (fname, lname, bdate, email, pass, ccard, idcard, book_count, is_vip, is_healthy) VALUES (@fname, @lname, @bdate, @email, Hashbytes('SHA2_512', @pass), @ccard, @idcard, @book_count, @is_vip, @is_healthy)
 RETURN 0
 END

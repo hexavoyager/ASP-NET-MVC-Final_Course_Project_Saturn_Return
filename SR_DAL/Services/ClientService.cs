@@ -3,7 +3,8 @@ using SR_DAL.Repos;
 using SR_DAL.Mappers;
 using System.Linq;
 using Tools.Connections.Database;
-
+using System.Security.Cryptography;
+using System;
 
 namespace SR_DAL.Services
 {
@@ -23,8 +24,16 @@ namespace SR_DAL.Services
             return _conn.ExecuteReader(cmd, dr => dr.ToClient()).SingleOrDefault();
         }
 
+        public Client GetByEmail(string email)
+        {
+            Command cmd = new Command("SELECT [Id], [fname], [lname], [bdate], [email], [ccard], [idcard], [book_count], [is_vip], [is_healthy] FROM [Clients] WHERE email = @email;", false);
+            cmd.AddParameter("email", email);
+            return _conn.ExecuteReader(cmd, dr => dr.ToClient()).SingleOrDefault();
+        }
+
         public void Register(Client client)
         {
+
             Command cmd = new Command("RegisterClient", true);
             cmd.AddParameter("fname", client.fname);
             cmd.AddParameter("lname", client.lname);

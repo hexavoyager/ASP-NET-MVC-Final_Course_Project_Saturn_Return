@@ -23,6 +23,11 @@ namespace SR_BLL.Services
         {
             return _clientRepo.Get(id)?.ToBLL();
         }
+
+        public Client GetByEmail(string email)
+        {
+            return _clientRepo.GetByEmail(email).ToBLL();
+        }
         public void Register(Client client)
         {
             _clientRepo.Register(client.ToDAL());
