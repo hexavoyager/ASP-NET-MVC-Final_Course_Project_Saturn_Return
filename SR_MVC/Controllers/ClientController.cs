@@ -23,8 +23,6 @@ namespace SR_MVC.Controllers
             _clientRepo = clientRepo;
             _sessionManager = sessionManager;
         }
-
-        // GET: ClientController
         public IActionResult ShowClient(int id)
         {
             Client client = _clientRepo.Get(id);
@@ -40,14 +38,10 @@ namespace SR_MVC.Controllers
                 is_vip = client.is_vip
             });
         }
-
-        // GET: ClientController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
-
-        // GET: ClientController/Create
         public ActionResult Create()
         {
             RegisterForm form = new RegisterForm();
@@ -55,7 +49,6 @@ namespace SR_MVC.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Create(RegisterForm form)
         {
             if (!ModelState.IsValid)
@@ -72,7 +65,6 @@ namespace SR_MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // POST: ClientController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -86,14 +78,11 @@ namespace SR_MVC.Controllers
                 return View();
             }
         }
-
-        // GET: ClientController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ClientController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -107,14 +96,11 @@ namespace SR_MVC.Controllers
                 return View();
             }
         }
-
-        // GET: ClientController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ClientController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

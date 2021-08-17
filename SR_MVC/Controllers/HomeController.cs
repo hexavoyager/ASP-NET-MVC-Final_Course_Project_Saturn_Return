@@ -84,8 +84,6 @@ namespace SR_MVC.Controllers
             IEnumerable<Period> periodsResult = System.Text.Json.JsonSerializer.Deserialize<Period[]>(periods.ToString(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             #endregion
 
-            
-
             #region Date & Wind checks
             IEnumerable<Period> selectedDates;
             DateTime pickedDate = form.dateA.Date;
@@ -111,19 +109,16 @@ namespace SR_MVC.Controllers
                     string cleanWindSpeed1 = new string(date1.WindSpeed.Where(Char.IsDigit).ToArray());
 
                     if (cleanWindSpeed1.Length > 1)
-                    {
                         cleanWindSpeed1 = cleanWindSpeed1.Substring(1);
-                    }
+
                     int intWindSpeed1 = Int32.Parse(cleanWindSpeed1);
 
                     string cleanWindSpeed2 = new string(date2.WindSpeed.Where(Char.IsDigit).ToArray());
 
                     if (cleanWindSpeed2.Length > 1)
-                    {
                         cleanWindSpeed2 = cleanWindSpeed2.Substring(1);
-                    }
-                    int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
 
+                    int intWindSpeed2 = Int32.Parse(cleanWindSpeed2);
 
                     #endregion
                     ViewBag.Alert = "";
@@ -191,7 +186,6 @@ namespace SR_MVC.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
@@ -206,8 +200,6 @@ namespace SR_MVC.Controllers
         {
             return _planetRepo.Get().Select(c => new SelectListItem(c.name, c.id.ToString()) { Selected = (id.HasValue && c.id == id.Value) });
         }
-
-
         public IActionResult GetPlanetInfo(int id)
         {
 
@@ -223,7 +215,6 @@ namespace SR_MVC.Controllers
 
             return PartialView("_atmosphere", dp);
         }
-
         public IActionResult Planets()
         {
             IEnumerable<Planet> Planets = _planetRepo.Get().ToList();
@@ -239,8 +230,6 @@ namespace SR_MVC.Controllers
             }));
             
         }
-
-
         public IActionResult Weather()
         {
             #region Weather API Call

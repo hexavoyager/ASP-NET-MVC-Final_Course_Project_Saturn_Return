@@ -21,7 +21,6 @@ namespace SR_MVC.Controllers
             _clientRepo = clientRepo;
             _sessionManager = sessionManager;
         }
-
         public IActionResult Index()
         {
             return RedirectToAction("Login");
@@ -35,7 +34,6 @@ namespace SR_MVC.Controllers
 
         [HttpPost]
         [AnonymousRequired]
-
         public IActionResult Login(LoginForm form)
         {
             if (!ModelState.IsValid)
@@ -86,7 +84,6 @@ namespace SR_MVC.Controllers
 
             return RedirectToAction("Login");
         }
-
         public IActionResult Logged()
         {
             Client CurrentClient = _clientRepo.Get(_sessionManager.Client.Id);
@@ -95,13 +92,5 @@ namespace SR_MVC.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Logged(int id)
-        //{
-        //    Client CurrentClient = _clientRepo.Get(_sessionManager.Client.Id);
-        //    string bookCountString = CurrentClient.book_count.ToString();
-        //    ViewBag.bookCount = bookCountString;
-        //    return View(bookCountString);
-        //}
     }
 }
