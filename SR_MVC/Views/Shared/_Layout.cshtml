@@ -35,16 +35,9 @@
                 </div>
             </div>
 
-            @*<a class="navbar-brand" href="#">Navbar</a>*@
-
-
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
-
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     @if (sessionManager.Client != null)
@@ -107,93 +100,6 @@
             </div>
         </nav>
 
-        @*<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-
-                <div class="night">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                </div>
-
-                <div id="logo">
-                    <img src="https://image.flaticon.com/icons/png/512/547/547440.png" alt="Saturn-Return ITA" width=100 />
-                </div>
-
-                <div id="name">
-                    <p><h2><strong>SATURN-RETURN</strong></h2></p>
-                    <p>Interstellar Travel Agency</p>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse d-sm-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 flex-shrink-3">
-                        @if (sessionManager.Client != null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   asp-area=""
-                                   asp-controller="Auth"
-                                   asp-action="Logged">
-                                    Home
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link active"
-                                   asp-area=""
-                                   asp-controller="Home"
-                                   asp-action="Booking">
-                                    <strong>Book a spaceflight</strong>
-                                </a>
-                            </li>
-
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   asp-area=""
-                                   asp-controller="Home"
-                                   asp-action="Index">
-                                    Home
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link active" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link"
-                               asp-area=""
-                               asp-controller="Home"
-                               asp-action="Planets">
-                                Destination planets
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                               asp-area=""
-                               asp-controller="Home"
-                               asp-action="Weather">
-                                Launch Forecast
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
     </header>
     <div class="container">
         <main role="main" class="pb-3">

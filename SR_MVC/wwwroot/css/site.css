@@ -494,27 +494,22 @@ button, .mainbtn, button::after {
 
 @media (max-width: 900px) {
 
-/*    .navbar {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-    }*/
-
-        .flex-container {
+.flex-container {
         display: flex;
         flex-direction: column;
-    }
+}
 
-    #logo {
+#logo {
         margin-left: 40px;
-    }
+}
 
-    .namecontainer {
+.namecontainer {
         padding-top: 10px;
         padding-left: 40px;
-    }
+}
 
-    .table {
+.table {
         max-width: 250px;
-    }
+}
+
 }
